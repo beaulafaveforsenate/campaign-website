@@ -1,0 +1,79 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <!-- Dark green gradient background -->
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#004d2b;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#006837;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#004d2b;stop-opacity:1" />
+    </linearGradient>
+    <!-- Gold accent gradient -->
+    <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#b8860b;stop-opacity:0" />
+      <stop offset="15%" style="stop-color:#daa520;stop-opacity:1" />
+      <stop offset="85%" style="stop-color:#daa520;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#b8860b;stop-opacity:0" />
+    </linearGradient>
+    <!-- Subtle light overlay for depth -->
+    <radialGradient id="lightOverlay" cx="30%" cy="40%" r="60%">
+      <stop offset="0%" style="stop-color:#ffffff;stop-opacity:0.06" />
+      <stop offset="100%" style="stop-color:#ffffff;stop-opacity:0" />
+    </radialGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="630" fill="url(#bgGrad)" />
+  <rect width="1200" height="630" fill="url(#lightOverlay)" />
+
+  <!-- Outer border frame -->
+  <rect x="16" y="16" width="1168" height="598" rx="4" ry="4" fill="none" stroke="#daa520" stroke-width="2" opacity="0.5" />
+  <rect x="24" y="24" width="1152" height="582" rx="2" ry="2" fill="none" stroke="#daa520" stroke-width="1" opacity="0.3" />
+
+  <!-- Top decorative accent bar -->
+  <rect x="100" y="60" width="1000" height="3" fill="url(#goldGrad)" opacity="0.7" />
+
+  <!-- Small diamond ornaments on the gold bar -->
+  <polygon points="600,52 608,60 600,68 592,60" fill="#daa520" opacity="0.7" />
+  <polygon points="300,56 305,60 300,64 295,60" fill="#daa520" opacity="0.5" />
+  <polygon points="900,56 905,60 900,64 895,60" fill="#daa520" opacity="0.5" />
+
+  <!-- District label at top -->
+  <text x="600" y="110" font-family="'Arial Black', 'Helvetica Neue', Arial, sans-serif" font-size="22" font-weight="700" fill="#6fbf73" text-anchor="middle" letter-spacing="6">MICHIGAN STATE SENATE</text>
+
+  <!-- Main name - BEAU -->
+  <text x="600" y="220" font-family="'Arial Black', 'Helvetica Neue', Arial, sans-serif" font-size="130" font-weight="900" fill="#ffffff" text-anchor="middle" letter-spacing="12">BEAU</text>
+
+  <!-- Main name - LAFAVE -->
+  <text x="600" y="330" font-family="'Arial Black', 'Helvetica Neue', Arial, sans-serif" font-size="110" font-weight="900" fill="#ffffff" text-anchor="middle" letter-spacing="10">LAFAVE</text>
+
+  <!-- Decorative divider line -->
+  <rect x="350" y="355" width="500" height="3" fill="url(#goldGrad)" opacity="0.8" />
+
+  <!-- FOR STATE SENATE -->
+  <text x="600" y="400" font-family="'Arial Black', 'Helvetica Neue', Arial, sans-serif" font-size="36" font-weight="700" fill="#6fbf73" text-anchor="middle" letter-spacing="8">FOR STATE SENATE</text>
+
+  <!-- District info -->
+  <text x="600" y="450" font-family="'Arial', 'Helvetica Neue', sans-serif" font-size="24" font-weight="400" fill="#a8d8ac" text-anchor="middle" letter-spacing="4">DISTRICT 38  &#x2022;  UPPER PENINSULA</text>
+
+  <!-- Bottom decorative accent bar -->
+  <rect x="100" y="480" width="1000" height="2" fill="url(#goldGrad)" opacity="0.5" />
+
+  <!-- Campaign slogan with emphasis styling -->
+  <rect x="300" y="500" width="600" height="56" rx="28" ry="28" fill="#ffffff" opacity="0.12" />
+  <text x="600" y="536" font-family="'Arial', 'Helvetica Neue', sans-serif" font-size="28" font-weight="700" fill="#ffffff" text-anchor="middle" letter-spacing="3" font-style="italic">Standing Up for the U.P.</text>
+
+  <!-- Bottom decorative bar -->
+  <rect x="100" y="572" width="1000" height="3" fill="url(#goldGrad)" opacity="0.7" />
+
+  <!-- Corner star accents -->
+  <!-- Top left -->
+  <text x="52" y="55" font-family="Arial, sans-serif" font-size="20" fill="#daa520" opacity="0.6" text-anchor="middle">&#x2605;</text>
+  <!-- Top right -->
+  <text x="1148" y="55" font-family="Arial, sans-serif" font-size="20" fill="#daa520" opacity="0.6" text-anchor="middle">&#x2605;</text>
+  <!-- Bottom left -->
+  <text x="52" y="600" font-family="Arial, sans-serif" font-size="20" fill="#daa520" opacity="0.6" text-anchor="middle">&#x2605;</text>
+  <!-- Bottom right -->
+  <text x="1148" y="600" font-family="Arial, sans-serif" font-size="20" fill="#daa520" opacity="0.6" text-anchor="middle">&#x2605;</text>
+
+  <!-- Paid for disclaimer at very bottom -->
+  <text x="600" y="615" font-family="'Arial', sans-serif" font-size="11" font-weight="400" fill="#6fbf73" text-anchor="middle" opacity="0.7">Paid for by the committee to elect Beau LaFave for State Senate</text>
+</svg>

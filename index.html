@@ -17,18 +17,24 @@
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
 
     <!-- Open Graph / Facebook -->
+    <!-- NOTE: For best social media compatibility, replace og-thumbnail.svg with a PNG version.
+         Open og-image.html in a browser, screenshot the 1200x630 card, save as images/og-thumbnail.png,
+         then change the URLs below from og-thumbnail.svg to og-thumbnail.png.
+         Facebook/LinkedIn strongly prefer PNG/JPG. Twitter/X supports SVG but PNG is safer. -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://beaulafave.com">
     <meta property="og:title" content="Beau LaFave for State Senate - Standing Up for the U.P.">
     <meta property="og:description" content="A proven champion for the Upper Peninsula. Former State Representative, licensed attorney, and tireless advocate for your rights.">
-    <meta property="og:image" content="https://beaulafave.com/images/beau-hero.jpg">
+    <meta property="og:image" content="https://beaulafave.com/images/og-thumbnail.svg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:url" content="https://beaulafave.com">
     <meta name="twitter:title" content="Beau LaFave for State Senate">
     <meta name="twitter:description" content="A proven champion for the Upper Peninsula. Former State Representative, licensed attorney, and tireless advocate for your rights.">
-    <meta name="twitter:image" content="https://beaulafave.com/images/beau-hero.jpg">
+    <meta name="twitter:image" content="https://beaulafave.com/images/og-thumbnail.svg">
 
     <!-- Structured Data -->
     <script type="application/ld+json">
@@ -223,15 +229,18 @@
                 </div>
             </div>
 
+            <div class="hometown-banner">
+                <span class="hometown-icon">&#127969;</span>
+                <span class="hometown-text">Born and raised in the U.P. — not a transplant, not a carpetbagger.</span>
+            </div>
+
             <div class="better-choice-grid">
                 <div class="beau-photo">
                     <img src="images/beau-headshot.jpg" alt="Beau LaFave - Candidate for Michigan State Senate District 38" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
                     <div class="photo-placeholder" style="display: none;">Add Photo</div>
-                    <!-- Likeability Element -->
-                    <div class="photo-caption">Born and raised in the U.P. - not a transplant, not a carpetbagger.</div>
                 </div>
                 <div class="better-choice-content">
-                    <h2>Meet Your State Senator</h2>
+                    <h2>Meet Your Next State Senator</h2>
                     <p class="lead">A Yooper. A Fighter. Your Neighbor.</p>
                     <p>Beau isn't a career politician climbing ladders. He's your neighbor - a lifelong U.P. resident who went to law school so he could <strong>actually write laws that work</strong> and fight back against government overreach with real legal expertise.</p>
                     <p>When Lansing politicians ignore the U.P., Beau notices. When they try to take your property rights, restrict your gun rights, or crush small businesses with overreach - <strong>Beau fights back</strong>. He's not going to the Senate to make friends. He's going to champion <em>your</em> interests.</p>
@@ -311,7 +320,7 @@
         <div class="container">
             <div class="impeachment-grid">
                 <div class="impeachment-photo">
-                    <img src="images/beau-house-floor.jpg" alt="Beau LaFave at the Michigan State Capitol">
+                    <img src="images/beau-capitol-hallway.jpg" alt="Beau LaFave at the Michigan State Capitol">
                 </div>
                 <div class="impeachment-content">
                     <h2>The Courage to Impeach</h2>
@@ -337,7 +346,7 @@
                 <!-- Featured Video: State Senate Campaign Announcement -->
                 <div class="video-feature-card">
                     <a href="https://www.uppermichiganssource.com/2025/10/22/former-rep-beau-lafave-run-michigan-state-senate/" target="_blank" rel="noopener" class="video-thumbnail-link">
-                        <div class="video-thumbnail" style="background: linear-gradient(135deg, #1a5f3c 0%, #0d3d26 100%); position: relative;">
+                        <div class="video-thumbnail" style="background: linear-gradient(135deg, #2d8f5e 0%, #1a5f3c 50%, #0d3d26 100%); position: relative;">
                             <div class="video-thumbnail-content">
                                 <span class="video-source-badge">TV6 News</span>
                                 <div class="video-play-overlay">
@@ -362,7 +371,7 @@
                 <!-- PBS Off the Record - July 2020 -->
                 <div class="video-feature-card">
                     <a href="https://www.pbs.org/video/jul-17-2020-rep-beau-lafave-full-episode-2itnnh/" target="_blank" rel="noopener" class="video-thumbnail-link">
-                        <div class="video-thumbnail" style="background: linear-gradient(135deg, #1a237e 0%, #0d47a1 100%); position: relative;">
+                        <div class="video-thumbnail" style="background: linear-gradient(135deg, #3949ab 0%, #1a237e 50%, #0d47a1 100%); position: relative;">
                             <div class="video-thumbnail-content">
                                 <span class="video-source-badge">PBS</span>
                                 <div class="video-play-overlay">
@@ -814,14 +823,28 @@
                     </div>
                 </div>
 
-                <form class="signup-form" id="email-form" onsubmit="handleSignup(event)">
+                <!-- MAILCHIMP SETUP:
+                     1. Create a Mailchimp account at mailchimp.com
+                     2. Create an Audience/List
+                     3. Go to Audience > Signup forms > Embedded forms
+                     4. Replace MAILCHIMP_USER_ID and MAILCHIMP_LIST_ID below with your actual values
+                     5. Map ZIP Code to a custom merge field (MMERGE3)
+                -->
+                <form class="signup-form" id="email-form" action="https://beaulafave.us21.list-manage.com/subscribe/post" method="POST" target="_blank" onsubmit="handleSignup(event)">
+                    <!-- Mailchimp hidden fields - REPLACE with actual values from Mailchimp -->
+                    <input type="hidden" name="u" value="MAILCHIMP_USER_ID">
+                    <input type="hidden" name="id" value="MAILCHIMP_LIST_ID">
                     <div class="form-row">
                         <label for="signup-name" class="visually-hidden">Your Name</label>
-                        <input type="text" id="signup-name" name="name" placeholder="Your Name" required aria-label="Your Name">
+                        <input type="text" id="signup-name" name="FNAME" placeholder="Your Name" required aria-label="Your Name">
                         <label for="signup-email" class="visually-hidden">Your Email</label>
-                        <input type="email" id="signup-email" name="email" placeholder="Your Email" required aria-label="Your Email">
+                        <input type="email" id="signup-email" name="EMAIL" placeholder="Your Email" required aria-label="Your Email">
                         <label for="signup-zip" class="visually-hidden">ZIP Code</label>
-                        <input type="text" id="signup-zip" name="zip" placeholder="ZIP Code" pattern="[0-9]{5}" title="5-digit ZIP code" aria-label="ZIP Code">
+                        <input type="text" id="signup-zip" name="MMERGE3" placeholder="ZIP Code" pattern="[0-9]{5}" title="5-digit ZIP code" aria-label="ZIP Code">
+                        <!-- Bot protection -->
+                        <div style="position: absolute; left: -5000px;" aria-hidden="true">
+                            <input type="text" name="b_MAILCHIMP_USER_ID_MAILCHIMP_LIST_ID" tabindex="-1" value="">
+                        </div>
                         <button type="submit" class="btn btn-secondary">Count Me In</button>
                     </div>
                     <p class="form-note">We respect your privacy. Unsubscribe anytime. No spam, ever.</p>
@@ -865,7 +888,7 @@
                 </div>
                 <div class="action-card">
                     <h3>Join the Grassroots Army</h3>
-                    <p>We win with people power, not PAC money. Knock doors, make calls, own this victory.</p>
+                    <p>Knock doors, make calls, own this victory. Every volunteer makes a difference.</p>
                     <a href="#signup" class="btn btn-primary">I'm Ready to Volunteer</a>
                 </div>
                 <div class="action-card">
@@ -986,24 +1009,16 @@
             });
         }
 
-        // Email signup handler
+        // Email signup handler (Mailchimp integration)
         function handleSignup(e) {
-            e.preventDefault();
+            // Allow form to submit to Mailchimp
             const form = e.target;
-            const formData = new FormData(form);
-            const data = {
-                name: formData.get('name'),
-                email: formData.get('email'),
-                zip: formData.get('zip'),
-                timestamp: new Date().toISOString()
-            };
-
-            let signups = JSON.parse(localStorage.getItem('campaign_signups') || '[]');
-            signups.push(data);
-            localStorage.setItem('campaign_signups', JSON.stringify(signups));
-
-            form.style.display = 'none';
-            document.getElementById('signup-success').style.display = 'block';
+            // Show success message after a brief delay
+            setTimeout(function() {
+                form.style.display = 'none';
+                document.getElementById('signup-success').style.display = 'block';
+            }, 500);
+            // Don't prevent default - let form submit to Mailchimp
         }
 
         // Animate stats on scroll

@@ -52,6 +52,9 @@
     --text: #2c3e2f;
     --text-light: #4a5d4d;
 
+    /* Fonts */
+    --font-accent: 'Oswald', sans-serif;
+
     /* Semantic aliases */
     --primary: var(--green-dark);
     --primary-light: var(--green);
@@ -1602,16 +1605,17 @@ nav {
 
 .featured-endorsement-grid {
     display: grid;
-    grid-template-columns: 1fr 1.5fr;
+    grid-template-columns: 1.2fr 1.5fr;
     gap: 60px;
     align-items: center;
-    max-width: 1000px;
+    max-width: 1100px;
     margin: 0 auto;
 }
 
 .featured-endorsement-photo img {
     width: 100%;
-    max-width: 400px;
+    max-width: 500px;
+    object-fit: contain;
     border-radius: 12px;
     box-shadow: 0 8px 32px rgba(0,0,0,0.3);
 }
@@ -1774,6 +1778,8 @@ nav {
 .map-placeholder-box img {
     max-width: 100%;
     display: block;
+    border-radius: 8px;
+    height: auto;
 }
 
 .map-placeholder-box svg {
@@ -1843,6 +1849,7 @@ nav {
     content: '\\2713';
     position: absolute;
     left: 0;
+    top: 10px;
     color: var(--green-dark);
     font-weight: 700;
 }
@@ -1854,6 +1861,7 @@ nav {
 
 .county-column li.partial-county::before {
     content: '\\2713';
+    top: 10px;
     color: var(--gray);
 }
 
@@ -1953,21 +1961,17 @@ nav {
     position: relative;
     /* Prevent any overflow issues */
     -webkit-overflow-scrolling: touch;
-    /* GPU acceleration - parent perspective for smooth 3D transforms */
-    -webkit-perspective: 1000px;
-    perspective: 1000px;
 }
 
 .quote-ticker-content {
     display: flex;
-    animation: scroll-left 8s linear infinite;
+    animation: scroll-left 60s linear infinite;
     white-space: nowrap;
+    gap: 0;
     /* GPU acceleration for smooth animation */
     will-change: transform;
     -webkit-backface-visibility: hidden;
     backface-visibility: hidden;
-    -webkit-transform-style: preserve-3d;
-    transform-style: preserve-3d;
     -webkit-transform: translate3d(0, 0, 0);
     transform: translate3d(0, 0, 0);
     /* Ensure content doesn't wrap */
@@ -2023,7 +2027,7 @@ nav {
 
 .endorsements-ticker-content {
     display: flex;
-    animation: scroll-right 10s linear infinite;
+    animation: scroll-right 25s linear infinite;
     white-space: nowrap;
     /* GPU acceleration for smooth animation */
     will-change: transform;
@@ -2419,7 +2423,7 @@ footer {
 .video-thumbnail {
     position: relative;
     padding-bottom: 56.25%; /* 16:9 aspect ratio */
-    min-height: 180px;
+    min-height: 220px;
     overflow: hidden;
     background-size: cover;
     background-position: center;
@@ -2442,7 +2446,7 @@ footer {
     position: absolute;
     top: 16px;
     left: 16px;
-    background: rgba(0, 0, 0, 0.6);
+    background: rgba(0, 0, 0, 0.75);
     color: white;
     font-family: var(--font-accent);
     font-size: 0.75rem;
@@ -2457,7 +2461,7 @@ footer {
 .video-play-overlay {
     width: 80px;
     height: 80px;
-    background: rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.3);
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -2487,6 +2491,9 @@ footer {
     font-size: 1rem;
     font-weight: 600;
     text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+    background: rgba(0, 0, 0, 0.5);
+    padding: 8px 12px;
+    border-radius: 4px;
 }
 
 .video-feature-content {
@@ -2836,17 +2843,20 @@ footer {
     .compare-table tr {
         display: block;
         background: var(--white);
-        margin-bottom: 20px;
-        padding: 20px;
+        margin-bottom: 24px;
+        padding: 0;
+        border-radius: 8px;
         border-left: 5px solid var(--green-dark);
-        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+        box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+        overflow: hidden;
     }
 
     .compare-table td {
         display: block;
-        padding: 12px 0;
+        padding: 14px 20px;
         border-bottom: 1px solid var(--gray-light);
         text-align: left;
+        font-size: 0.95rem;
     }
 
     .compare-table td:last-child {
@@ -2857,20 +2867,23 @@ footer {
         content: attr(data-label);
         display: block;
         font-weight: 700;
-        font-size: 0.85rem;
-        color: var(--green-dark);
+        font-size: 0.8rem;
+        color: var(--gray);
         text-transform: uppercase;
         letter-spacing: 1px;
-        margin-bottom: 6px;
+        margin-bottom: 4px;
     }
 
     .compare-table td:first-child {
         background: var(--green-dark);
         color: var(--white);
-        padding: 16px;
-        margin: -20px -20px 16px -20px;
+        padding: 16px 20px;
+        margin: 0;
         font-weight: 700;
-        font-size: 1.1rem;
+        font-size: 1.05rem;
+        font-family: 'Oswald', sans-serif;
+        text-transform: uppercase;
+        letter-spacing: 1px;
     }
 
     .compare-table td:first-child strong {
@@ -2882,10 +2895,12 @@ footer {
     }
 
     .compare-table .highlight-col {
-        background: rgba(0, 104, 55, 0.08);
-        padding: 12px 16px;
-        margin: 0 -20px;
+        background: rgba(0, 104, 55, 0.06);
+        padding: 14px 20px;
+        margin: 0;
         border-left: 4px solid var(--green-accent);
+        font-weight: 600;
+        color: var(--green-dark);
     }
 
     .compare-table tbody .highlight-col {
@@ -3169,11 +3184,71 @@ footer {
 
 /* Photo Caption */
 .photo-caption {
-    margin-top: 16px;
-    font-size: 0.9rem;
-    color: var(--gray);
-    font-style: italic;
+    background: var(--green-dark);
+    color: var(--white);
+    padding: 16px 24px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    font-style: normal;
+    font-family: 'Oswald', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-top: 20px;
+    border-left: 4px solid var(--green-accent, #6fbf73);
+    text-align: left;
+}
+
+/* Hometown Banner */
+.hometown-banner {
+    background: var(--green-dark);
+    color: var(--white);
+    padding: 20px 32px;
+    margin: 32px 0;
     text-align: center;
+    border-top: 3px solid var(--gold, #d4a843);
+    border-bottom: 3px solid var(--gold, #d4a843);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+}
+
+.hometown-icon {
+    font-size: 2rem;
+    line-height: 1;
+    flex-shrink: 0;
+}
+
+.hometown-text {
+    font-family: 'Oswald', sans-serif;
+    font-size: 1.4rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+@media (max-width: 768px) {
+    .hometown-banner {
+        padding: 16px 20px;
+        gap: 10px;
+    }
+    .hometown-text {
+        font-size: 1.1rem;
+        letter-spacing: 1px;
+    }
+    .hometown-icon {
+        font-size: 1.6rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .hometown-text {
+        font-size: 0.95rem;
+        letter-spacing: 0.5px;
+    }
+    .hometown-icon {
+        font-size: 1.3rem;
+    }
 }
 
 /* Free Resource Box (Reciprocity) */
@@ -4012,7 +4087,7 @@ footer {
     }
 
     .quote-ticker-content {
-        animation-duration: 25s;
+        animation-duration: 45s;
     }
 
     .quote-ticker-item {
@@ -4027,7 +4102,7 @@ footer {
     }
 
     .quote-ticker-content {
-        animation-duration: 20s;
+        animation-duration: 40s;
     }
 
     .quote-ticker-item {
@@ -4048,7 +4123,7 @@ footer {
     }
 
     .endorsements-ticker-content {
-        animation-duration: 35s;
+        animation-duration: 20s;
     }
 
     .endorsements-ticker-item {
@@ -4065,7 +4140,7 @@ footer {
 
 @media (max-width: 480px) {
     .endorsements-ticker-content {
-        animation-duration: 30s;
+        animation-duration: 18s;
     }
 
     .endorsements-ticker-item {
@@ -4201,13 +4276,13 @@ footer {
 
     .compare-table td:first-child {
         padding: 14px;
-        margin: -16px -16px 12px -16px;
+        margin: 0;
         font-size: 1rem;
     }
 
     .compare-table .highlight-col {
         padding: 10px 12px;
-        margin: 0 -16px;
+        margin: 0;
     }
 }
 
@@ -4224,13 +4299,13 @@ footer {
 
     .compare-table td:first-child {
         padding: 12px;
-        margin: -12px -12px 10px -12px;
+        margin: 0;
         font-size: 0.9rem;
     }
 
     .compare-table .highlight-col {
         padding: 8px 10px;
-        margin: 0 -12px;
+        margin: 0;
     }
 }
 
