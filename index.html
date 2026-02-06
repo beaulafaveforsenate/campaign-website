@@ -1045,51 +1045,81 @@
             statsObserver.observe(card);
         });
 
-        // ===== QUOTE TICKER: requestAnimationFrame for glitch-free scrolling =====
+        // ===== TICKER ENGINE: smooth requestAnimationFrame scrolling for both bars =====
         (function() {
-            var ticker = document.querySelector('.quote-ticker-content');
-            if (!ticker) return;
-
-            // Check for reduced motion preference
             if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
-            var items = ticker.querySelectorAll('.quote-ticker-item');
-            var halfCount = items.length / 2; // We have 6 original + 6 duplicates
-            var offset = 0;
-            var speed = 1.2; // pixels per frame (~72px/sec at 60fps) - adjust for desired speed
-            var halfWidth = 0;
-            var running = true;
+            function createTicker(contentSelector, containerSelector, pxPerSecond, direction) {
+                var ticker = document.querySelector(contentSelector);
+                if (!ticker) return;
 
-            function measureHalfWidth() {
-                // Measure the width of the first half (original items)
-                halfWidth = 0;
-                for (var i = 0; i < halfCount; i++) {
-                    halfWidth += items[i].offsetWidth;
+                var offset = 0;
+                var halfWidth = 0;
+                var running = true;
+                var lastTime = 0;
+
+                function measure() {
+                    // Measure total width of first half of children
+                    var children = ticker.children;
+                    var total = children.length;
+                    var half = Math.floor(total / 2);
+                    halfWidth = 0;
+                    for (var i = 0; i < half; i++) {
+                        halfWidth += children[i].offsetWidth;
+                        var style = window.getComputedStyle(children[i]);
+                        halfWidth += parseFloat(style.marginLeft) + parseFloat(style.marginRight);
+                    }
+                    // For endorsements, include separators in the count
+                    if (halfWidth === 0) {
+                        halfWidth = ticker.scrollWidth / 2;
+                    }
                 }
-            }
 
-            measureHalfWidth();
-            window.addEventListener('resize', measureHalfWidth);
-
-            function step() {
-                if (!running) return;
-                offset += speed;
-                // When we've scrolled past the first half, reset seamlessly
-                if (offset >= halfWidth) {
-                    offset -= halfWidth;
+                measure();
+                // Start endorsements ticker at -halfWidth so it scrolls into view from the left
+                if (direction === 1) {
+                    offset = halfWidth;
                 }
-                ticker.style.transform = 'translate3d(' + (-offset) + 'px, 0, 0)';
+
+                window.addEventListener('resize', measure);
+
+                function step(timestamp) {
+                    if (!running) { lastTime = 0; requestAnimationFrame(step); return; }
+                    if (!lastTime) lastTime = timestamp;
+                    var delta = (timestamp - lastTime) / 1000; // seconds
+                    lastTime = timestamp;
+
+                    // Cap delta to prevent huge jumps (e.g., tab was hidden)
+                    if (delta > 0.1) delta = 0.016;
+
+                    offset += pxPerSecond * delta * direction;
+
+                    // Seamless loop
+                    if (direction === -1 && offset <= -halfWidth) {
+                        offset += halfWidth;
+                    } else if (direction === 1 && offset >= halfWidth) {
+                        offset -= halfWidth;
+                    }
+
+                    ticker.style.transform = 'translate3d(' + (-offset) + 'px, 0, 0)';
+                    requestAnimationFrame(step);
+                }
+
+                // Pause on hover
+                var container = document.querySelector(containerSelector);
+                if (container) {
+                    container.addEventListener('mouseenter', function() { running = false; });
+                    container.addEventListener('mouseleave', function() { running = true; lastTime = 0; });
+                }
+
                 requestAnimationFrame(step);
             }
 
-            // Pause on hover for readability
-            var container = document.querySelector('.quote-ticker');
-            if (container) {
-                container.addEventListener('mouseenter', function() { running = false; });
-                container.addEventListener('mouseleave', function() { running = true; requestAnimationFrame(step); });
-            }
+            // Quote ticker: scrolls LEFT at 80px/sec
+            createTicker('.quote-ticker-content', '.quote-ticker', 80, -1);
 
-            requestAnimationFrame(step);
+            // Endorsements ticker: scrolls RIGHT at 60px/sec
+            createTicker('.endorsements-ticker-content', '.endorsements-ticker', 60, 1);
         })();
     </script>
 </body>

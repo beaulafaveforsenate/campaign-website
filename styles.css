@@ -2022,14 +2022,11 @@ nav {
 
 .endorsements-ticker-content {
     display: flex;
-    animation: scroll-right 25s linear infinite;
     white-space: nowrap;
     /* GPU acceleration for smooth animation */
     will-change: transform;
     -webkit-backface-visibility: hidden;
     backface-visibility: hidden;
-    -webkit-transform-style: preserve-3d;
-    transform-style: preserve-3d;
     -webkit-transform: translate3d(0, 0, 0);
     transform: translate3d(0, 0, 0);
     align-items: center;
@@ -2090,14 +2087,7 @@ nav {
     transform: scale(1.05);
 }
 
-@keyframes scroll-right {
-    0% {
-        transform: translate3d(-50%, 0, 0);
-    }
-    100% {
-        transform: translate3d(0, 0, 0);
-    }
-}
+/* scroll-right keyframes removed - using JS requestAnimationFrame for glitch-free scrolling */
 
 /* ===== Responsive Countdown ===== */
 @media (max-width: 600px) {
@@ -3068,10 +3058,7 @@ footer {
 
 /* ===== Accessibility: Reduced Motion ===== */
 @media (prefers-reduced-motion: reduce) {
-    .quote-ticker-content,
-    .endorsements-ticker-content {
-        animation: none;
-    }
+    /* Tickers handled by JS which checks prefers-reduced-motion */
 
     .btn:hover,
     .issue-card:hover,
@@ -4103,12 +4090,12 @@ footer {
 /* ===== Quote Ticker Mobile Improvements ===== */
 @media (max-width: 768px) {
     .quote-ticker {
-        padding: 16px 0;
+        padding: 14px 0;
     }
 
     .quote-ticker-item {
         padding: 0 30px;
-        font-size: 0.95rem;
+        font-size: 1rem;
     }
 }
 
@@ -4118,8 +4105,8 @@ footer {
     }
 
     .quote-ticker-item {
-        padding: 0 20px;
-        font-size: 0.85rem;
+        padding: 0 24px;
+        font-size: 0.95rem;
     }
 }
 
@@ -4134,13 +4121,18 @@ footer {
         margin-bottom: 8px;
     }
 
-    .endorsements-ticker-content {
-        animation-duration: 20s;
+    .endorsements-ticker-item {
+        padding: 0 20px;
+        font-size: 0.85rem;
     }
 
-    .endorsements-ticker-item {
-        padding: 0 24px;
+    .endorsements-ticker-item.endorsement-text {
         font-size: 0.85rem;
+        padding: 0 6px;
+    }
+
+    .endorsement-separator {
+        margin: 0 6px;
     }
 
     .endorsements-ticker-item img,
@@ -4151,12 +4143,19 @@ footer {
 }
 
 @media (max-width: 480px) {
-    .endorsements-ticker-content {
-        animation-duration: 18s;
+    .endorsements-ticker-item {
+        padding: 0 14px;
     }
 
-    .endorsements-ticker-item {
-        padding: 0 16px;
+    .endorsements-ticker-item.endorsement-text {
+        font-size: 0.8rem;
+        padding: 0 4px;
+    }
+
+    .endorsement-separator {
+        width: 5px;
+        height: 5px;
+        margin: 0 4px;
     }
 
     .endorsements-ticker-item img,
