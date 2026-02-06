@@ -1968,7 +1968,6 @@ nav {
 
 .quote-ticker-content {
     display: flex;
-    animation: scroll-left 60s linear infinite;
     white-space: nowrap;
     gap: 0;
     /* GPU acceleration for smooth animation */
@@ -1995,14 +1994,7 @@ nav {
     font-style: normal;
 }
 
-@keyframes scroll-left {
-    0% {
-        transform: translate3d(0, 0, 0);
-    }
-    100% {
-        transform: translate3d(-50%, 0, 0);
-    }
-}
+/* scroll-left keyframes removed - using JS requestAnimationFrame for glitch-free scrolling */
 
 /* ===== Past Endorsements Ticker ===== */
 .endorsements-ticker {
@@ -4103,10 +4095,6 @@ footer {
         padding: 16px 0;
     }
 
-    .quote-ticker-content {
-        animation-duration: 45s;
-    }
-
     .quote-ticker-item {
         padding: 0 30px;
         font-size: 0.95rem;
@@ -4116,10 +4104,6 @@ footer {
 @media (max-width: 480px) {
     .quote-ticker {
         padding: 12px 0;
-    }
-
-    .quote-ticker-content {
-        animation-duration: 40s;
     }
 
     .quote-ticker-item {
