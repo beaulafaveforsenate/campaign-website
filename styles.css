@@ -411,7 +411,7 @@ nav {
 }
 
 .about-highlights li::before {
-    content: '\\2713';
+    content: '\2713';
     position: absolute;
     left: 16px;
     color: var(--green-dark);
@@ -1159,7 +1159,7 @@ nav {
 }
 
 .beau-highlights li::before {
-    content: '\\2713';
+    content: '\2713';
     position: absolute;
     left: 24px;
     top: 24px;
@@ -1615,7 +1615,10 @@ nav {
 .featured-endorsement-photo img {
     width: 100%;
     max-width: 500px;
-    object-fit: contain;
+    height: auto;
+    display: block;
+    object-fit: cover;
+    aspect-ratio: 1 / 1;
     border-radius: 12px;
     box-shadow: 0 8px 32px rgba(0,0,0,0.3);
 }
@@ -1846,7 +1849,7 @@ nav {
 }
 
 .county-column li::before {
-    content: '\\2713';
+    content: '\2713';
     position: absolute;
     left: 0;
     top: 10px;
@@ -1860,7 +1863,7 @@ nav {
 }
 
 .county-column li.partial-county::before {
-    content: '\\2713';
+    content: '\2713';
     top: 10px;
     color: var(--gray);
 }
@@ -2427,6 +2430,7 @@ footer {
     overflow: hidden;
     background-size: cover;
     background-position: center;
+    border-radius: 12px 12px 0 0;
 }
 
 .video-thumbnail-content {
@@ -2446,29 +2450,32 @@ footer {
     position: absolute;
     top: 16px;
     left: 16px;
-    background: rgba(0, 0, 0, 0.75);
+    background: rgba(0, 0, 0, 0.8);
     color: white;
     font-family: var(--font-accent);
     font-size: 0.75rem;
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 1.5px;
-    padding: 6px 12px;
+    padding: 6px 14px;
     border-radius: 4px;
     backdrop-filter: blur(4px);
+    z-index: 2;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
 }
 
 .video-play-overlay {
     width: 80px;
     height: 80px;
-    background: rgba(255, 255, 255, 0.3);
+    background: rgba(255, 255, 255, 0.25);
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
     transition: all 0.3s ease;
     backdrop-filter: blur(4px);
-    border: 2px solid rgba(255, 255, 255, 0.3);
+    border: 3px solid rgba(255, 255, 255, 0.6);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
 }
 
 .video-thumbnail-link:hover .video-play-overlay {
@@ -2491,9 +2498,11 @@ footer {
     font-size: 1rem;
     font-weight: 600;
     text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
-    background: rgba(0, 0, 0, 0.5);
-    padding: 8px 12px;
+    background: rgba(0, 0, 0, 0.6);
+    padding: 10px 14px;
     border-radius: 4px;
+    z-index: 2;
+    backdrop-filter: blur(4px);
 }
 
 .video-feature-content {
@@ -3797,6 +3806,14 @@ footer {
         padding: 8px 0 8px 24px;
     }
 
+    .county-column li::before {
+        top: 8px;
+    }
+
+    .county-column li.partial-county::before {
+        top: 8px;
+    }
+
     .district-note {
         font-size: 0.8rem;
         padding: 12px;
@@ -4260,12 +4277,12 @@ footer {
 /* ===== Comparison Table Enhanced Mobile ===== */
 @media (max-width: 480px) {
     .compare-table tr {
-        padding: 16px;
+        padding: 0;
         margin-bottom: 16px;
     }
 
     .compare-table td {
-        padding: 10px 0;
+        padding: 10px 16px;
         font-size: 0.85rem;
     }
 
@@ -4275,25 +4292,25 @@ footer {
     }
 
     .compare-table td:first-child {
-        padding: 14px;
+        padding: 14px 16px;
         margin: 0;
         font-size: 1rem;
     }
 
     .compare-table .highlight-col {
-        padding: 10px 12px;
+        padding: 10px 16px;
         margin: 0;
     }
 }
 
 @media (max-width: 375px) {
     .compare-table tr {
-        padding: 12px;
+        padding: 0;
         margin-bottom: 12px;
     }
 
     .compare-table td {
-        padding: 8px 0;
+        padding: 8px 12px;
         font-size: 0.8rem;
     }
 
@@ -4304,7 +4321,7 @@ footer {
     }
 
     .compare-table .highlight-col {
-        padding: 8px 10px;
+        padding: 8px 12px;
         margin: 0;
     }
 }
@@ -4466,8 +4483,16 @@ footer {
     }
 
     .county-column li {
-        padding: 8px 0 8px 22px;
+        padding: 8px 0 8px 24px;
         font-size: 0.9rem;
+    }
+
+    .county-column li::before {
+        top: 8px;
+    }
+
+    .county-column li.partial-county::before {
+        top: 8px;
     }
 
     .district-note {
