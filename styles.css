@@ -338,6 +338,7 @@ nav {
 /* ===== About / Meet Beau ===== */
 .about {
     background: var(--white);
+    padding-top: 40px;
 }
 
 .about h2 {
@@ -1568,6 +1569,8 @@ nav {
     height: 100%;
     object-fit: cover;
     transition: transform 0.3s;
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
 }
 
 .gallery-item:hover img {
@@ -1959,7 +1962,7 @@ nav {
 /* ===== Scrolling Quote Bar ===== */
 .quote-ticker {
     background: var(--green-dark);
-    padding: 20px 0;
+    padding: 14px 0;
     overflow: hidden;
     position: relative;
     width: 100%;
@@ -1976,12 +1979,13 @@ nav {
     transform: translate3d(0, 0, 0);
     flex-shrink: 0;
     width: max-content;
+    align-items: center;
 }
 
 .quote-ticker-item {
     color: var(--white);
-    padding: 0 60px;
-    font-size: 1.1rem;
+    padding: 0 32px;
+    font-size: 0.9rem;
     font-style: italic;
     flex-shrink: 0;
     display: inline-block;
@@ -4093,7 +4097,7 @@ footer {
 /* ===== Quote Ticker Mobile Improvements ===== */
 @media (max-width: 768px) {
     .quote-ticker {
-        padding: 12px 0;
+        padding: 10px 0;
         overflow: hidden;
     }
 
@@ -4104,8 +4108,8 @@ footer {
     }
 
     .quote-ticker-item {
-        padding: 0 24px;
-        font-size: 0.875rem;
+        padding: 0 20px;
+        font-size: 0.8rem;
         display: inline-block;
         flex-shrink: 0;
     }
@@ -4113,23 +4117,23 @@ footer {
 
 @media (max-width: 480px) {
     .quote-ticker {
-        padding: 10px 0;
-    }
-
-    .quote-ticker-item {
-        padding: 0 18px;
-        font-size: 0.8rem;
-    }
-}
-
-@media (max-width: 375px) {
-    .quote-ticker {
         padding: 8px 0;
     }
 
     .quote-ticker-item {
         padding: 0 14px;
         font-size: 0.75rem;
+    }
+}
+
+@media (max-width: 375px) {
+    .quote-ticker {
+        padding: 6px 0;
+    }
+
+    .quote-ticker-item {
+        padding: 0 10px;
+        font-size: 0.7rem;
     }
 }
 
