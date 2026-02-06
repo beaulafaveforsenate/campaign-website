@@ -185,30 +185,22 @@
             <span class="endorsements-ticker-item endorsement-text">Michigan Realtors</span>
         </div>
     </div>
-    <!-- ===== QUOTES TICKER ===== -->
-    <div class="quotes-ticker">
-        <p class="quotes-ticker-label">What People Are Saying</p>
-        <div class="quotes-ticker-content">
-            <span class="quotes-ticker-item">"Beau LaFave is exactly what the Upper Peninsula needs — someone who actually fights back." — U.P. Small Business Owner</span>
-            <span class="quotes-ticker-separator">★</span>
-            <span class="quotes-ticker-item">"I've watched Beau stand up for our Second Amendment rights when others stayed silent." — Iron County Voter</span>
-            <span class="quotes-ticker-separator">★</span>
-            <span class="quotes-ticker-item">"As a property owner who's dealt with DNR overreach, I know Beau understands our struggles." — Marquette County Resident</span>
-            <span class="quotes-ticker-separator">★</span>
-            <span class="quotes-ticker-item">"Beau took on the Governor when nobody else would. That's real leadership." — Dickinson County Resident</span>
-            <span class="quotes-ticker-separator">★</span>
-            <span class="quotes-ticker-item">"He doesn't just talk about protecting our rights — he actually does it." — Houghton County Voter</span>
-            <span class="quotes-ticker-separator">★</span>
+    <!-- ===== SCROLLING QUOTE BAR ===== -->
+    <div class="quote-ticker">
+        <div class="quote-ticker-content">
+            <span class="quote-ticker-item">"I've been fighting my entire life." <strong>— Beau LaFave</strong></span>
+            <span class="quote-ticker-item">"Fought the Governor, the lobbyists, and won." <strong>— Campaign Record</strong></span>
+            <span class="quote-ticker-item">"I am proud to fight for the rights of all Michiganders." <strong>— Beau LaFave</strong></span>
+            <span class="quote-ticker-item">"Great news for families who need safe, reliable and affordable energy." <strong>— On Line 5 Victory</strong></span>
+            <span class="quote-ticker-item">"The transparency package is what the public deserves and demands." <strong>— On FOIA Reform</strong></span>
+            <span class="quote-ticker-item">"Government transparency bill passed 109-0." <strong>— Bipartisan Achievement</strong></span>
             <!-- Duplicate for seamless loop -->
-            <span class="quotes-ticker-item">"Beau LaFave is exactly what the Upper Peninsula needs — someone who actually fights back." — U.P. Small Business Owner</span>
-            <span class="quotes-ticker-separator">★</span>
-            <span class="quotes-ticker-item">"I've watched Beau stand up for our Second Amendment rights when others stayed silent." — Iron County Voter</span>
-            <span class="quotes-ticker-separator">★</span>
-            <span class="quotes-ticker-item">"As a property owner who's dealt with DNR overreach, I know Beau understands our struggles." — Marquette County Resident</span>
-            <span class="quotes-ticker-separator">★</span>
-            <span class="quotes-ticker-item">"Beau took on the Governor when nobody else would. That's real leadership." — Dickinson County Resident</span>
-            <span class="quotes-ticker-separator">★</span>
-            <span class="quotes-ticker-item">"He doesn't just talk about protecting our rights — he actually does it." — Houghton County Voter</span>
+            <span class="quote-ticker-item">"I've been fighting my entire life." <strong>— Beau LaFave</strong></span>
+            <span class="quote-ticker-item">"Fought the Governor, the lobbyists, and won." <strong>— Campaign Record</strong></span>
+            <span class="quote-ticker-item">"I am proud to fight for the rights of all Michiganders." <strong>— Beau LaFave</strong></span>
+            <span class="quote-ticker-item">"Great news for families who need safe, reliable and affordable energy." <strong>— On Line 5 Victory</strong></span>
+            <span class="quote-ticker-item">"The transparency package is what the public deserves and demands." <strong>— On FOIA Reform</strong></span>
+            <span class="quote-ticker-item">"Government transparency bill passed 109-0." <strong>— Bipartisan Achievement</strong></span>
         </div>
     </div>
 
@@ -248,7 +240,7 @@
                 <div class="better-choice-content">
                     <h2>About Beau</h2>
                     <p class="lead">A Yooper. A Fighter. Your Neighbor.</p>
-                    <p>Beau served <strong>6 years as State Representative</strong> for District 108 (2017-2022) and <strong>3 years as legislative staff</strong> for the 108th District, Chippewa, and Mackinac counties. He's a lifelong U.P. resident who went to law school so he could actually write laws that work.</p>
+                    <p>Beau served <strong>6 years as State Representative</strong> for the 108th District (2017-2022) and then <strong>3 years as legislative staff</strong> serving the entire 38th Senate District and the State of Michigan — including Chippewa and Mackinac counties. He's a lifelong U.P. resident who went to law school so he could actually write laws that work.</p>
                     <p>When the COVID lockdowns hit, <strong>Beau stood up for the U.P.</strong> He defended Upper Peninsula families and businesses against unconstitutional restrictions from the very beginning — and he never backed down.</p>
                 </div>
             </div>
@@ -1024,8 +1016,8 @@
             // Endorsements ticker: 50 pixels per second
             initTicker('.endorsements-ticker-content', '.endorsements-ticker', 50);
 
-            // Quotes ticker: 40 pixels per second (slightly slower for readability)
-            initTicker('.quotes-ticker-content', '.quotes-ticker', 40);
+            // Quote ticker: 40 pixels per second (slightly slower for readability)
+            initTicker('.quote-ticker-content', '.quote-ticker', 40);
         })();
     </script>
 </body>
