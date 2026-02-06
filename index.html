@@ -1045,81 +1045,54 @@
             statsObserver.observe(card);
         });
 
-        // ===== TICKER ENGINE: smooth requestAnimationFrame scrolling for both bars =====
+        // ===== TICKER ENGINE: smooth requestAnimationFrame scrolling =====
+        // Both tickers scroll LEFT. Content is duplicated in HTML for seamless loop.
+        // We measure scrollWidth/2 as the reset point.
         (function() {
             if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
-            function createTicker(contentSelector, containerSelector, pxPerSecond, direction) {
-                var ticker = document.querySelector(contentSelector);
-                if (!ticker) return;
-
-                var offset = 0;
-                var halfWidth = 0;
-                var running = true;
-                var lastTime = 0;
+            function initTicker(contentSel, wrapperSel, speed) {
+                var el = document.querySelector(contentSel);
+                if (!el) return;
+                var pos = 0;
+                var resetAt = 0;
+                var paused = false;
+                var prev = 0;
 
                 function measure() {
-                    // Measure total width of first half of children
-                    var children = ticker.children;
-                    var total = children.length;
-                    var half = Math.floor(total / 2);
-                    halfWidth = 0;
-                    for (var i = 0; i < half; i++) {
-                        halfWidth += children[i].offsetWidth;
-                        var style = window.getComputedStyle(children[i]);
-                        halfWidth += parseFloat(style.marginLeft) + parseFloat(style.marginRight);
-                    }
-                    // For endorsements, include separators in the count
-                    if (halfWidth === 0) {
-                        halfWidth = ticker.scrollWidth / 2;
-                    }
+                    // scrollWidth = total width of all children
+                    // Since content is duplicated, half is the loop point
+                    resetAt = el.scrollWidth / 2;
                 }
-
                 measure();
-                // Start endorsements ticker at -halfWidth so it scrolls into view from the left
-                if (direction === 1) {
-                    offset = halfWidth;
-                }
+                window.addEventListener('resize', function() { measure(); });
 
-                window.addEventListener('resize', measure);
+                function tick(now) {
+                    if (!prev) prev = now;
+                    var dt = (now - prev) / 1000;
+                    prev = now;
+                    if (dt > 0.1) dt = 0.016; // cap after tab switch
 
-                function step(timestamp) {
-                    if (!running) { lastTime = 0; requestAnimationFrame(step); return; }
-                    if (!lastTime) lastTime = timestamp;
-                    var delta = (timestamp - lastTime) / 1000; // seconds
-                    lastTime = timestamp;
-
-                    // Cap delta to prevent huge jumps (e.g., tab was hidden)
-                    if (delta > 0.1) delta = 0.016;
-
-                    offset += pxPerSecond * delta * direction;
-
-                    // Seamless loop
-                    if (direction === -1 && offset <= -halfWidth) {
-                        offset += halfWidth;
-                    } else if (direction === 1 && offset >= halfWidth) {
-                        offset -= halfWidth;
+                    if (!paused && resetAt > 0) {
+                        pos += speed * dt;
+                        if (pos >= resetAt) pos -= resetAt;
+                        el.style.transform = 'translate3d(' + (-pos) + 'px,0,0)';
                     }
-
-                    ticker.style.transform = 'translate3d(' + (-offset) + 'px, 0, 0)';
-                    requestAnimationFrame(step);
+                    requestAnimationFrame(tick);
                 }
 
-                // Pause on hover
-                var container = document.querySelector(containerSelector);
-                if (container) {
-                    container.addEventListener('mouseenter', function() { running = false; });
-                    container.addEventListener('mouseleave', function() { running = true; lastTime = 0; });
+                var wrap = document.querySelector(wrapperSel);
+                if (wrap) {
+                    wrap.addEventListener('mouseenter', function() { paused = true; });
+                    wrap.addEventListener('mouseleave', function() { paused = false; prev = 0; });
                 }
-
-                requestAnimationFrame(step);
+                requestAnimationFrame(tick);
             }
 
-            // Quote ticker: scrolls LEFT at 80px/sec
-            createTicker('.quote-ticker-content', '.quote-ticker', 80, -1);
-
-            // Endorsements ticker: scrolls RIGHT at 60px/sec
-            createTicker('.endorsements-ticker-content', '.endorsements-ticker', 60, 1);
+            // Quote ticker: 80 pixels per second
+            initTicker('.quote-ticker-content', '.quote-ticker', 80);
+            // Endorsements ticker: 50 pixels per second
+            initTicker('.endorsements-ticker-content', '.endorsements-ticker', 50);
         })();
     </script>
 </body>
