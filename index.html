@@ -21,14 +21,14 @@
     <meta property="og:url" content="https://beaulafave.com">
     <meta property="og:title" content="Beau LaFave for State Senate - Standing Up for the U.P.">
     <meta property="og:description" content="A proven champion for the Upper Peninsula. Former State Representative, licensed attorney, and tireless advocate for your rights.">
-    <meta property="og:image" content="images/beau-hero.jpg">
+    <meta property="og:image" content="https://beaulafave.com/images/beau-hero.jpg">
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:url" content="https://beaulafave.com">
     <meta name="twitter:title" content="Beau LaFave for State Senate">
     <meta name="twitter:description" content="A proven champion for the Upper Peninsula. Former State Representative, licensed attorney, and tireless advocate for your rights.">
-    <meta name="twitter:image" content="images/beau-hero.jpg">
+    <meta name="twitter:image" content="https://beaulafave.com/images/beau-hero.jpg">
 
     <!-- Structured Data -->
     <script type="application/ld+json">
@@ -311,7 +311,7 @@
         <div class="container">
             <div class="impeachment-grid">
                 <div class="impeachment-photo">
-                    <img src="images/beau-capitol.jpg" alt="Beau LaFave at the Michigan State Capitol" onerror="this.src='images/beau-house-floor.jpg'">
+                    <img src="images/beau-house-floor.jpg" alt="Beau LaFave at the Michigan State Capitol">
                 </div>
                 <div class="impeachment-content">
                     <h2>The Courage to Impeach</h2>
@@ -981,6 +981,8 @@
         function copyLink() {
             navigator.clipboard.writeText(window.location.href).then(() => {
                 alert('Link copied to clipboard!');
+            }).catch(() => {
+                prompt('Copy this link:', window.location.href);
             });
         }
 
