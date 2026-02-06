@@ -3460,6 +3460,9 @@ footer {
     position: relative;
     border-color: var(--green-accent);
     background: linear-gradient(135deg, var(--white) 0%, var(--cream) 100%);
+    z-index: 1;
+    overflow: visible;
+    margin-top: 12px;
 }
 
 .action-badge {
@@ -3474,6 +3477,7 @@ footer {
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 1px;
+    z-index: 2;
 }
 
 /* Footer Final CTA */
@@ -4090,23 +4094,34 @@ footer {
 /* ===== Quote Ticker Mobile Improvements ===== */
 @media (max-width: 768px) {
     .quote-ticker {
-        padding: 14px 0;
-    }
-
-    .quote-ticker-item {
-        padding: 0 30px;
-        font-size: 1rem;
-    }
-}
-
-@media (max-width: 480px) {
-    .quote-ticker {
         padding: 12px 0;
     }
 
     .quote-ticker-item {
         padding: 0 24px;
-        font-size: 0.95rem;
+        font-size: 0.875rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .quote-ticker {
+        padding: 10px 0;
+    }
+
+    .quote-ticker-item {
+        padding: 0 18px;
+        font-size: 0.8rem;
+    }
+}
+
+@media (max-width: 375px) {
+    .quote-ticker {
+        padding: 8px 0;
+    }
+
+    .quote-ticker-item {
+        padding: 0 14px;
+        font-size: 0.75rem;
     }
 }
 
