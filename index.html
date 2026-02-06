@@ -185,6 +185,33 @@
             <span class="endorsements-ticker-item endorsement-text">Michigan Realtors</span>
         </div>
     </div>
+    <!-- ===== QUOTES TICKER ===== -->
+    <div class="quotes-ticker">
+        <p class="quotes-ticker-label">What People Are Saying</p>
+        <div class="quotes-ticker-content">
+            <span class="quotes-ticker-item">"Beau LaFave is exactly what the Upper Peninsula needs — someone who actually fights back." — U.P. Small Business Owner</span>
+            <span class="quotes-ticker-separator">★</span>
+            <span class="quotes-ticker-item">"I've watched Beau stand up for our Second Amendment rights when others stayed silent." — Iron County Voter</span>
+            <span class="quotes-ticker-separator">★</span>
+            <span class="quotes-ticker-item">"As a property owner who's dealt with DNR overreach, I know Beau understands our struggles." — Marquette County Resident</span>
+            <span class="quotes-ticker-separator">★</span>
+            <span class="quotes-ticker-item">"Beau took on the Governor when nobody else would. That's real leadership." — Dickinson County Resident</span>
+            <span class="quotes-ticker-separator">★</span>
+            <span class="quotes-ticker-item">"He doesn't just talk about protecting our rights — he actually does it." — Houghton County Voter</span>
+            <span class="quotes-ticker-separator">★</span>
+            <!-- Duplicate for seamless loop -->
+            <span class="quotes-ticker-item">"Beau LaFave is exactly what the Upper Peninsula needs — someone who actually fights back." — U.P. Small Business Owner</span>
+            <span class="quotes-ticker-separator">★</span>
+            <span class="quotes-ticker-item">"I've watched Beau stand up for our Second Amendment rights when others stayed silent." — Iron County Voter</span>
+            <span class="quotes-ticker-separator">★</span>
+            <span class="quotes-ticker-item">"As a property owner who's dealt with DNR overreach, I know Beau understands our struggles." — Marquette County Resident</span>
+            <span class="quotes-ticker-separator">★</span>
+            <span class="quotes-ticker-item">"Beau took on the Governor when nobody else would. That's real leadership." — Dickinson County Resident</span>
+            <span class="quotes-ticker-separator">★</span>
+            <span class="quotes-ticker-item">"He doesn't just talk about protecting our rights — he actually does it." — Houghton County Voter</span>
+        </div>
+    </div>
+
     <!-- ===== ABOUT BEAU ===== -->
     <section id="about" class="section about">
         <div class="container">
@@ -501,12 +528,12 @@
                         <tr>
                             <td><strong>COVID / Executive Overreach</strong></td>
                             <td data-label="Dave Prestin">Not in office during COVID lockdowns</td>
-                            <td class="highlight-col" data-label="Beau LaFave">Opposed initial lockdown &bull; Introduced bills to end lockdowns &bull; Changed law allowing abuse of power &bull; Threatened impeachment of Dickinson &amp; Iron health directors for masking kids (led to order being rescinded) &bull; Filed articles of impeachment against Whitmer</td>
+                            <td class="highlight-col" data-label="Beau LaFave">• Opposed initial lockdown<br>• Introduced bills to end lockdowns<br>• Changed law allowing abuse of power<br>• Threatened impeachment of Dickinson &amp; Iron health directors for masking kids (led to order being rescinded)<br>• Filed articles of impeachment against Whitmer</td>
                         </tr>
                         <tr>
                             <td><strong>Property Rights</strong></td>
                             <td data-label="Dave Prestin">Wants to raise gas tax; copied Beau's warrant requirement bill word for word</td>
-                            <td class="highlight-col" data-label="Beau LaFave">Required DNR to get warrant to enter property &bull; Required body cams for DNR officers &bull; Opposed every fee increase on park passports, trail permits, and hunting/fishing licenses</td>
+                            <td class="highlight-col" data-label="Beau LaFave">• Required DNR to get warrant to enter property<br>• Required body cams for DNR officers<br>• Opposed every fee increase on park passports, trail permits, and hunting/fishing licenses</td>
                         </tr>
                         <tr>
                             <td><strong>Political Style</strong></td>
@@ -564,36 +591,6 @@
         </div>
     </section>
 
-    <!-- ===== ENDORSEMENTS / TESTIMONIALS ===== -->
-    <section id="endorsements" class="section testimonials-section">
-        <div class="container">
-            <h2>Why Yoopers Trust Beau</h2>
-            <p class="section-subtitle">Real people. Real support. Join thousands of Upper Peninsula residents backing Beau.</p>
-
-            <div class="endorsements-grid">
-                <div class="endorsement-card featured-testimonial">
-                    <div class="quote-mark">"</div>
-                    <p class="endorsement-quote">Beau LaFave is exactly what the Upper Peninsula needs - someone who actually fights back instead of just complaining. When Whitmer overreached, he was the one who acted.</p>
-                    <p class="endorsement-source">- U.P. Small Business Owner</p>
-                </div>
-                <div class="endorsement-card">
-                    <div class="quote-mark">"</div>
-                    <p class="endorsement-quote">I've watched Beau stand up for our Second Amendment rights when others stayed silent. Actions speak louder than words, and Beau delivers.</p>
-                    <p class="endorsement-source">- Iron County Voter</p>
-                </div>
-                <div class="endorsement-card">
-                    <div class="quote-mark">"</div>
-                    <p class="endorsement-quote">As a property owner who's dealt with DNR overreach, I know Beau understands our struggles. He's fought for us before and he'll do it again.</p>
-                    <p class="endorsement-source">- Marquette County Resident</p>
-                </div>
-            </div>
-
-            <div class="testimonial-cta">
-                <p>Want to share why you're supporting Beau?</p>
-                <a href="#signup" class="btn btn-primary">Add Your Voice</a>
-            </div>
-        </div>
-    </section>
 
     <!-- ===== MEDIA COVERAGE ===== -->
     <section id="media" class="section media-section">
@@ -1026,6 +1023,9 @@
 
             // Endorsements ticker: 50 pixels per second
             initTicker('.endorsements-ticker-content', '.endorsements-ticker', 50);
+
+            // Quotes ticker: 40 pixels per second (slightly slower for readability)
+            initTicker('.quotes-ticker-content', '.quotes-ticker', 40);
         })();
     </script>
 </body>
