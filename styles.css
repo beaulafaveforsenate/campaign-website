@@ -338,7 +338,7 @@ nav {
 /* ===== About / Meet Beau ===== */
 .about {
     background: var(--white);
-    padding-top: 40px;
+    padding-top: 12px;
 }
 
 .about h2 {
@@ -3346,7 +3346,7 @@ footer {
     background: var(--green-dark);
     color: var(--white);
     padding: 20px 32px;
-    margin: 32px 0;
+    margin: 12px 0 32px;
     text-align: center;
     border-top: 3px solid var(--gold, #d4a843);
     border-bottom: 3px solid var(--gold, #d4a843);
