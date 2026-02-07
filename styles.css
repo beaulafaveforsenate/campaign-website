@@ -2102,11 +2102,10 @@ nav {
     display: flex;
     white-space: nowrap;
     gap: 0;
-    will-change: transform;
-    transform: translate3d(0, 0, 0);
     flex-shrink: 0;
     width: max-content;
     align-items: center;
+    animation: ticker-scroll 45s linear infinite;
 }
 
 .quote-ticker-item {
@@ -2131,20 +2130,23 @@ nav {
     margin-left: 6px;
 }
 
-/* CSS animation fallback — plays until JS takes over via .js-ticker-active class */
-@keyframes ticker-scroll-fallback {
+/* Pure CSS ticker animation — runs on compositor thread, no JS needed */
+@keyframes ticker-scroll {
     from { transform: translate3d(0, 0, 0); }
     to { transform: translate3d(-50%, 0, 0); }
 }
 
-.quote-ticker-content,
-.endorsements-ticker-content {
-    animation: ticker-scroll-fallback 60s linear infinite;
+/* Pause on hover (desktop) */
+.endorsements-ticker:hover .endorsements-ticker-content,
+.quote-ticker:hover .quote-ticker-content {
+    animation-play-state: paused;
 }
 
-/* JS adds this class to disable CSS animation and take full control */
-.js-ticker-active {
-    animation: none !important;
+@media (prefers-reduced-motion: reduce) {
+    .quote-ticker-content,
+    .endorsements-ticker-content {
+        animation: none;
+    }
 }
 
 /* ===== Past Endorsements Ticker ===== */
@@ -2169,11 +2171,10 @@ nav {
 .endorsements-ticker-content {
     display: flex;
     white-space: nowrap;
-    will-change: transform;
-    transform: translate3d(0, 0, 0);
     align-items: center;
     flex-shrink: 0;
     width: max-content;
+    animation: ticker-scroll 35s linear infinite;
 }
 
 .endorsements-ticker-item {
