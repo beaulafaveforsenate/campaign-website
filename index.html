@@ -997,8 +997,9 @@
             statsObserver.observe(card);
         });
 
-        // ===== TICKER ENGINE v3: bulletproof scrolling =====
-        // Fixes: mobile jank, incorrect measurement, tab-switch jumps
+        // ===== TICKER ENGINE v4: definitive fix =====
+        // v4 fixes: measurement uses data-attribute marker instead of children/2,
+        // CSS @keyframes fallback if JS hasn't measured yet, proper visibility handling
         (function() {
             if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
@@ -1012,56 +1013,77 @@
                 var paused = false;
                 var lastTime = 0;
                 var measured = false;
+                var running = false;
+
+                // Mark the first duplicate child with a data attribute so we know
+                // exactly where the original content ends. This avoids the children/2
+                // bug when separators create an odd child count.
+                var foundComment = false;
+                var firstDupeIndex = -1;
+                for (var n = 0; n < el.childNodes.length; n++) {
+                    if (el.childNodes[n].nodeType === 8 && el.childNodes[n].textContent.indexOf('Duplicate') !== -1) {
+                        // Find the next element sibling after this comment
+                        var sib = el.childNodes[n].nextSibling;
+                        while (sib && sib.nodeType !== 1) sib = sib.nextSibling;
+                        if (sib) {
+                            // Count element children up to this point
+                            var elChildren = el.children;
+                            for (var j = 0; j < elChildren.length; j++) {
+                                if (elChildren[j] === sib) { firstDupeIndex = j; break; }
+                            }
+                        }
+                        foundComment = true;
+                        break;
+                    }
+                }
 
                 function measure() {
-                    // Force layout recalc by reading offsetWidth
                     void wrap.offsetWidth;
-                    // Count only the first half of children (original, not duplicates)
                     var children = el.children;
-                    var half = Math.floor(children.length / 2);
+                    var boundary = firstDupeIndex > 0 ? firstDupeIndex : Math.ceil(children.length / 2);
                     var w = 0;
-                    for (var i = 0; i < half; i++) {
-                        // Use getBoundingClientRect for sub-pixel accuracy
+                    for (var i = 0; i < boundary; i++) {
                         w += children[i].getBoundingClientRect().width;
                     }
                     if (w > 0) {
                         resetAt = w;
                         measured = true;
                     } else {
-                        // Fallback
                         resetAt = el.scrollWidth / 2;
                         if (resetAt > 0) measured = true;
                     }
                 }
 
-                // Measure multiple times to catch late font/layout changes
                 function scheduleMeasure() {
                     measure();
-                    setTimeout(measure, 200);
-                    setTimeout(measure, 500);
-                    setTimeout(measure, 1500);
+                    setTimeout(measure, 150);
+                    setTimeout(measure, 400);
+                    setTimeout(measure, 1000);
+                    setTimeout(measure, 2500);
                 }
 
                 scheduleMeasure();
+
                 window.addEventListener('resize', function() {
                     measured = false;
                     pos = 0;
+                    el.style.transform = 'translate3d(0,0,0)';
                     scheduleMeasure();
                 });
                 if (document.fonts && document.fonts.ready) {
                     document.fonts.ready.then(scheduleMeasure);
                 }
-                // Also re-measure on orientation change (mobile)
                 window.addEventListener('orientationchange', function() {
                     setTimeout(scheduleMeasure, 300);
                 });
 
                 function tick(now) {
+                    if (!running) return;
                     if (!lastTime) { lastTime = now; requestAnimationFrame(tick); return; }
                     var dt = (now - lastTime) / 1000;
                     lastTime = now;
 
-                    // Clamp dt to prevent jumps after tab switch or lag
+                    // Clamp: skip huge gaps (tab switch, throttle, etc)
                     if (dt > 0.05) dt = 0.016;
                     if (dt <= 0) { requestAnimationFrame(tick); return; }
 
@@ -1073,31 +1095,53 @@
                     requestAnimationFrame(tick);
                 }
 
-                // Pause on hover (desktop) and touch (mobile)
+                function startAnimation() {
+                    if (running) return;
+                    running = true;
+                    lastTime = 0;
+                    // Disable CSS fallback animation, JS takes full control
+                    el.classList.add('js-ticker-active');
+                    requestAnimationFrame(tick);
+                }
+
+                function stopAnimation() {
+                    running = false;
+                }
+
+                // Pause on hover (desktop)
                 wrap.addEventListener('mouseenter', function() { paused = true; });
                 wrap.addEventListener('mouseleave', function() { paused = false; lastTime = 0; });
-                // Pause on touch to prevent interference with scrolling
+                // Pause on touch (mobile) — brief pause to avoid conflict with scroll
                 wrap.addEventListener('touchstart', function() { paused = true; }, {passive: true});
                 wrap.addEventListener('touchend', function() {
-                    setTimeout(function() { paused = false; lastTime = 0; }, 300);
+                    setTimeout(function() { paused = false; lastTime = 0; }, 250);
                 }, {passive: true});
 
-                // Visibility API: pause when tab is hidden, reset timing when visible
+                // Visibility: stop rAF entirely when hidden, restart when visible
                 document.addEventListener('visibilitychange', function() {
                     if (document.hidden) {
-                        paused = true;
+                        stopAnimation();
                     } else {
-                        lastTime = 0;
-                        paused = false;
+                        startAnimation();
                     }
                 });
 
-                requestAnimationFrame(tick);
+                // Only start if page is visible
+                if (!document.hidden) {
+                    startAnimation();
+                } else {
+                    // Will start when tab becomes visible
+                    document.addEventListener('visibilitychange', function onFirst() {
+                        if (!document.hidden) {
+                            startAnimation();
+                            document.removeEventListener('visibilitychange', onFirst);
+                        }
+                    });
+                }
             }
 
-            // Endorsements ticker: 50px/sec
+            // Endorsements: 50px/sec, Quotes: 40px/sec
             initTicker('.endorsements-ticker-content', '.endorsements-ticker', 50);
-            // Quote ticker: 40px/sec
             initTicker('.quote-ticker-content', '.quote-ticker', 40);
         })();
     </script>

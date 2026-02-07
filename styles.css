@@ -2120,16 +2120,36 @@ nav {
     padding: 0 24px;
     font-size: 0.9rem;
     font-style: italic;
+    font-weight: 400;
     flex-shrink: 0;
-    display: inline-block;
+    display: inline-flex;
+    align-items: baseline;
+    white-space: nowrap;
 }
 
 .quote-ticker-item strong {
     color: var(--green-accent);
     font-style: normal;
+    font-weight: 600;
+    font-size: 0.85em;
+    margin-left: 6px;
 }
 
-/* scroll-left keyframes removed - using JS requestAnimationFrame for glitch-free scrolling */
+/* CSS animation fallback — plays until JS takes over via .js-ticker-active class */
+@keyframes ticker-scroll-fallback {
+    from { transform: translate3d(0, 0, 0); }
+    to { transform: translate3d(-50%, 0, 0); }
+}
+
+.quote-ticker-content,
+.endorsements-ticker-content {
+    animation: ticker-scroll-fallback 60s linear infinite;
+}
+
+/* JS adds this class to disable CSS animation and take full control */
+.js-ticker-active {
+    animation: none !important;
+}
 
 /* ===== Past Endorsements Ticker ===== */
 .endorsements-ticker {
@@ -4261,7 +4281,8 @@ footer {
 
     .quote-ticker-item {
         padding: 0 10px;
-        font-size: 0.75rem;
+        /* Stay at 0.8rem to match endorsements (which has no 375px rule) */
+        font-size: 0.8rem;
     }
 }
 
