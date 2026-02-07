@@ -2092,14 +2092,10 @@ nav {
 /* ===== Scrolling Quote Bar ===== */
 .quote-ticker {
     background: var(--green-dark);
-    padding: 12px 0;
+    padding: 8px 0;
     overflow: hidden;
     position: relative;
     width: 100%;
-    /* Prevent overflow on mobile */
-    -webkit-overflow-scrolling: touch;
-    -webkit-perspective: 1000px;
-    perspective: 1000px;
 }
 
 .quote-ticker-content {
@@ -2107,8 +2103,6 @@ nav {
     white-space: nowrap;
     gap: 0;
     will-change: transform;
-    -webkit-backface-visibility: hidden;
-    backface-visibility: hidden;
     transform: translate3d(0, 0, 0);
     flex-shrink: 0;
     width: max-content;
@@ -2156,15 +2150,10 @@ nav {
 /* ===== Past Endorsements Ticker ===== */
 .endorsements-ticker {
     background: var(--cream);
-    padding: 16px 0;
+    padding: 10px 0;
     overflow: hidden;
     border-top: 2px solid var(--gray-light);
-    border-bottom: 2px solid var(--gray-light);
-    /* Prevent any overflow issues */
-    -webkit-overflow-scrolling: touch;
-    /* GPU acceleration - parent perspective for smooth 3D transforms */
-    -webkit-perspective: 1000px;
-    perspective: 1000px;
+    border-bottom: none;
 }
 
 .endorsements-ticker-label {
@@ -2173,21 +2162,16 @@ nav {
     text-transform: uppercase;
     letter-spacing: 2px;
     color: var(--gray);
-    margin-bottom: 12px;
+    margin-bottom: 6px;
     font-weight: 600;
 }
 
 .endorsements-ticker-content {
     display: flex;
     white-space: nowrap;
-    /* GPU acceleration for smooth animation */
     will-change: transform;
-    -webkit-backface-visibility: hidden;
-    backface-visibility: hidden;
-    -webkit-transform: translate3d(0, 0, 0);
     transform: translate3d(0, 0, 0);
     align-items: center;
-    /* Ensure content doesn't wrap */
     flex-shrink: 0;
     width: max-content;
 }
@@ -4255,32 +4239,30 @@ footer {
    to look visually the same size as the endorsements ticker text */
 @media (max-width: 768px) {
     .quote-ticker {
-        padding: 10px 0;
+        padding: 6px 0;
         overflow: hidden;
     }
 
     .quote-ticker-item {
         padding: 0 14px;
-        /* Endorsements .endorsement-text = 0.85rem Oswald; visually match with smaller Montserrat */
         font-size: 0.7rem;
     }
 }
 
 @media (max-width: 480px) {
     .quote-ticker {
-        padding: 8px 0;
+        padding: 5px 0;
     }
 
     .quote-ticker-item {
         padding: 0 10px;
-        /* Endorsements .endorsement-text = 0.8rem Oswald */
         font-size: 0.65rem;
     }
 }
 
 @media (max-width: 375px) {
     .quote-ticker {
-        padding: 6px 0;
+        padding: 4px 0;
     }
 
     .quote-ticker-item {
@@ -4292,12 +4274,12 @@ footer {
 /* ===== Endorsements Ticker Mobile Improvements ===== */
 @media (max-width: 768px) {
     .endorsements-ticker {
-        padding: 12px 0;
+        padding: 8px 0;
     }
 
     .endorsements-ticker-label {
         font-size: 0.7rem;
-        margin-bottom: 8px;
+        margin-bottom: 4px;
     }
 
     .endorsements-ticker-item {

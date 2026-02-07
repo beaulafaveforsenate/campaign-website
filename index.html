@@ -1084,8 +1084,8 @@
                     var dt = (now - lastTime) / 1000;
                     lastTime = now;
 
-                    // Clamp: skip huge gaps (tab switch, throttle, etc)
-                    if (dt > 0.05) dt = 0.016;
+                    // Smooth clamp: cap at 2 frames (~33ms) instead of hard-snapping to 16ms
+                    if (dt > 0.033) dt = 0.033;
                     if (dt <= 0) { requestAnimationFrame(tick); return; }
 
                     if (!paused && measured && resetAt > 0) {
@@ -1111,11 +1111,11 @@
 
                 // Pause on hover (desktop)
                 wrap.addEventListener('mouseenter', function() { paused = true; });
-                wrap.addEventListener('mouseleave', function() { paused = false; lastTime = 0; });
+                wrap.addEventListener('mouseleave', function() { paused = false; });
                 // Pause on touch (mobile) — brief pause to avoid conflict with scroll
                 wrap.addEventListener('touchstart', function() { paused = true; }, {passive: true});
                 wrap.addEventListener('touchend', function() {
-                    setTimeout(function() { paused = false; lastTime = 0; }, 250);
+                    setTimeout(function() { paused = false; }, 200);
                 }, {passive: true});
 
                 // Visibility: stop rAF entirely when hidden, restart when visible
