@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thank You! - Beau LaFave for State Senate</title>
+    <meta name="robots" content="noindex">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect fill='%23006837' width='32' height='32'/%3E%3Ctext x='50%25' y='55%25' fill='white' font-family='Arial Black' font-size='18' font-weight='bold' text-anchor='middle' dominant-baseline='middle'%3EBL%3C/text%3E%3C/svg%3E">
+    <meta name="theme-color" content="#006837">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        .ty-page {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .ty-hero {
+            background: linear-gradient(135deg, var(--green-dark) 0%, var(--green) 100%);
+            padding: 80px 0 60px;
+            text-align: center;
+            position: relative;
+        }
+
+        .ty-hero::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.05' fill-rule='evenodd'%3E%3Cpath d='M0 40L40 0H20L0 20M40 40V20L20 40'/%3E%3C/g%3E%3C/svg%3E");
+        }
+
+        .ty-hero .container {
+            position: relative;
+            z-index: 1;
+        }
+
+        .ty-checkmark {
+            width: 80px;
+            height: 80px;
+            background: rgba(255,255,255,0.2);
+            border: 3px solid white;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            color: white;
+            margin-bottom: 24px;
+            animation: scaleIn 0.5s ease;
+        }
+
+        @keyframes scaleIn {
+            0% { transform: scale(0); opacity: 0; }
+            60% { transform: scale(1.15); }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        .ty-hero h1 {
+            color: white;
+            font-size: 2.8rem;
+            margin-bottom: 12px;
+        }
+
+        .ty-hero p {
+            color: rgba(255,255,255,0.9);
+            font-size: 1.2rem;
+            max-width: 550px;
+            margin: 0 auto;
+        }
+
+        .ty-main {
+            flex: 1;
+            padding: 60px 0 80px;
+            background: var(--off-white);
+        }
+
+        .ty-card {
+            max-width: 640px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 8px;
+            padding: 48px 40px;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+            text-align: center;
+        }
+
+        .ty-card h2 {
+            font-size: 1.8rem;
+            color: var(--green-dark);
+            margin-bottom: 20px;
+            line-height: 1.3;
+        }
+
+        .ty-card-body p {
+            color: var(--text);
+            font-size: 1.05rem;
+            line-height: 1.8;
+            margin-bottom: 16px;
+            text-align: left;
+        }
+
+        .ty-cost-breakdown {
+            display: flex;
+            justify-content: center;
+            gap: 32px;
+            margin: 28px 0;
+            padding: 24px;
+            background: var(--cream);
+            border-radius: 8px;
+        }
+
+        .ty-cost-item {
+            text-align: center;
+        }
+
+        .ty-cost-item .amount {
+            display: block;
+            font-family: 'Oswald', sans-serif;
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--green-dark);
+        }
+
+        .ty-cost-item .label {
+            font-size: 0.85rem;
+            color: var(--text-light);
+        }
+
+        .ty-donate-btn {
+            display: block;
+            width: 100%;
+            margin-top: 32px;
+            font-size: 1.15rem;
+            padding: 20px 42px;
+            text-align: center;
+        }
+
+        .ty-skip {
+            display: inline-block;
+            margin-top: 20px;
+            color: var(--gray);
+            font-size: 0.95rem;
+            text-decoration: none;
+            border-bottom: 1px dashed var(--gray);
+            transition: color 0.2s;
+        }
+
+        .ty-skip:hover {
+            color: var(--text);
+        }
+
+        .ty-footer {
+            background: var(--green-dark);
+            padding: 24px 0;
+            text-align: center;
+        }
+
+        .ty-footer p {
+            color: rgba(255,255,255,0.7);
+            font-size: 0.85rem;
+        }
+
+        .ty-footer a {
+            color: white;
+            text-decoration: none;
+        }
+
+        @media (max-width: 600px) {
+            .ty-hero { padding: 60px 0 40px; }
+            .ty-hero h1 { font-size: 2rem; }
+            .ty-card { padding: 32px 20px; }
+            .ty-cost-breakdown { flex-direction: column; gap: 16px; }
+        }
+    </style>
+</head>
+<body class="ty-page">
+    <div class="ty-hero">
+        <div class="container">
+            <div class="ty-checkmark">&#10003;</div>
+            <h1>Your Yard Sign Is on the Way!</h1>
+            <p>Thank you for standing with Beau. Your support means everything to this campaign.</p>
+        </div>
+    </div>
+
+    <div class="ty-main">
+        <div class="container">
+            <div class="ty-card">
+                <h2>Can You Help Us Get Signs to More Supporters?</h2>
+                <div class="ty-card-body">
+                    <p>Here's the honest truth — we want to put a yard sign in front of every supporter's home across the Upper Peninsula. But printing, stakes, and delivery across 13,000 square miles of the U.P. adds up fast.</p>
+
+                    <div class="ty-cost-breakdown">
+                        <div class="ty-cost-item">
+                            <span class="amount">$5</span>
+                            <span class="label">Covers your sign</span>
+                        </div>
+                        <div class="ty-cost-item">
+                            <span class="amount">$10</span>
+                            <span class="label">Your sign + a neighbor's</span>
+                        </div>
+                        <div class="ty-cost-item">
+                            <span class="amount">$25</span>
+                            <span class="label">Signs for a whole block</span>
+                        </div>
+                    </div>
+
+                    <p>You've already taken the first step by requesting a sign. If you're able to chip in even <strong>$5</strong>, you'll help cover the cost of your sign and keep this grassroots campaign moving forward.</p>
+                    <p>No pressure at all — we're grateful either way.</p>
+                </div>
+
+                <a href="https://secure.anedot.com/beau-lafave-for-state-senate" target="_blank" rel="noopener" class="btn btn-primary ty-donate-btn">Chip in $5 to Cover Your Sign</a>
+                <a href="index.html" class="ty-skip">No thanks — take me back to the site</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="ty-footer">
+        <div class="container">
+            <p>&copy; 2026 <a href="index.html">Beau LaFave for State Senate</a>. Paid for by the committee to elect Beau LaFave for State Senate.</p>
+        </div>
+    </div>
+</body>
+</html>

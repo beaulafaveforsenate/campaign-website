@@ -796,17 +796,6 @@
                     <p class="form-note">We'll never share your info. Your sign will be delivered as soon as possible.</p>
                 </form>
 
-                <div id="yard-sign-success" class="yard-sign-success" style="display: none;">
-                    <div class="yard-sign-success-icon">&#10003;</div>
-                    <h3>Thank You for Requesting a Yard Sign!</h3>
-                    <p>We're so grateful for your support. Your sign will be on its way soon.</p>
-                    <div class="yard-sign-donate-ask">
-                        <p>Here's the honest truth — yard signs, printing, and delivery add up fast. If you're able to chip in even <strong>$5</strong>, it would go a long way toward helping us get signs to supporters all across the U.P.</p>
-                        <p>No pressure at all — your support already means the world.</p>
-                        <a href="https://secure.anedot.com/beau-lafave-for-state-senate" target="_blank" rel="noopener" class="btn btn-primary">Chip In $5 to Help Cover Costs</a>
-                        <p class="yard-sign-no-thanks" id="yard-sign-dismiss">No thanks, I'm all set!</p>
-                    </div>
-                </div>
             </div>
         </div>
     </section>
@@ -1033,19 +1022,11 @@
             statsObserver.observe(card);
         });
 
-        // Yard sign form handler
+        // Yard sign form handler — redirect to thank-you page
         function handleYardSign(e) {
             e.preventDefault();
-            const form = document.getElementById('yard-sign-form');
-            const success = document.getElementById('yard-sign-success');
-            form.style.display = 'none';
-            success.style.display = 'block';
-            success.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            window.location.href = 'thank-you.html';
         }
-
-        document.getElementById('yard-sign-dismiss').addEventListener('click', function() {
-            document.querySelector('.yard-sign-donate-ask').innerHTML = '<p style="font-size: 1.2rem; font-weight: 600;">You\'re awesome — thank you for standing with Beau!</p>';
-        });
 
         // Tickers use pure CSS animation — no JS needed.
     </script>
