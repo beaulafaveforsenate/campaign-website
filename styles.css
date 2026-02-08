@@ -5014,12 +5014,12 @@ footer {
 .signup-combined-fields {
     display: flex;
     flex-direction: column;
-    gap: 12px;
+    gap: 14px;
 }
 
 .signup-combined-row {
     display: flex;
-    gap: 12px;
+    gap: 14px;
 }
 
 .signup-combined-field {
@@ -5036,10 +5036,12 @@ footer {
 
 .signup-combined-field input {
     width: 100%;
-    padding: 16px 18px;
+    padding: 14px 16px;
     border: none;
-    font-size: 1rem;
+    border-radius: 4px;
+    font-size: 0.95rem;
     font-family: 'Montserrat', sans-serif;
+    box-sizing: border-box;
 }
 
 .signup-combined-field input:focus {
@@ -5073,6 +5075,10 @@ footer {
 
 .yard-sign-address-fields {
     animation: slideDown 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    margin-top: 4px;
 }
 
 @keyframes slideDown {
@@ -5097,6 +5103,7 @@ footer {
 @media (max-width: 600px) {
     .signup-combined-row {
         flex-direction: column;
+        gap: 12px;
     }
 
     .signup-combined-field-sm {
