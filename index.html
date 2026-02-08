@@ -67,7 +67,7 @@
                 <li><a href="#district">District</a></li>
                 <li><a href="#media">In the News</a></li>
                 <li><a href="#action">Get Involved</a></li>
-                <li><a href="#yard-sign">Yard Sign</a></li>
+                <li><a href="#signup">Yard Sign</a></li>
                 <li><a href="blog.html">News</a></li>
                 <li><a href="https://secure.anedot.com/beau-lafave-for-state-senate" target="_blank" rel="noopener" class="nav-donate">Donate</a></li>
             </ul>
@@ -85,7 +85,7 @@
                     <li><a href="#district">District 38</a></li>
                     <li><a href="#media">In the News</a></li>
                     <li><a href="#action">Get Involved</a></li>
-                    <li><a href="#yard-sign">Yard Sign</a></li>
+                    <li><a href="#signup">Yard Sign</a></li>
                     <li><a href="blog.html">News</a></li>
                     <li><a href="https://secure.anedot.com/beau-lafave-for-state-senate" target="_blank" rel="noopener" class="nav-donate">Donate</a></li>
                 </ul>
@@ -124,7 +124,7 @@
 
                 <div class="hero-buttons">
                     <a href="https://secure.anedot.com/beau-lafave-for-state-senate" target="_blank" rel="noopener" class="btn btn-primary">Donate Now</a>
-                    <a href="#about" class="btn btn-outline">Meet Beau</a>
+                    <a href="#signup" class="btn btn-outline">Request a Yard Sign</a>
                 </div>
             </div>
             <div class="hero-image-column">
@@ -204,17 +204,6 @@
             <span class="quote-ticker-item">"Great news for families who need safe, reliable and affordable energy." <strong>— On Line 5 Victory</strong></span>
             <span class="quote-ticker-item">"The transparency package is what the public deserves and demands." <strong>— On FOIA Reform</strong></span>
             <span class="quote-ticker-item">"Government transparency bill passed 109-0." <strong>— Bipartisan Achievement</strong></span>
-        </div>
-    </div>
-
-    <!-- ===== YARD SIGN CTA BANNER ===== -->
-    <div class="yard-sign-banner">
-        <div class="container">
-            <div class="yard-sign-banner-content">
-                <span class="yard-sign-banner-icon">&#9881;</span>
-                <p><strong>Show Your Support!</strong> Request a free yard sign for your home.</p>
-                <a href="#yard-sign" class="btn btn-secondary yard-sign-banner-btn">Request a Yard Sign</a>
-            </div>
         </div>
     </div>
 
@@ -737,70 +726,7 @@
         </div>
     </section>
 
-    <!-- ===== YARD SIGN REQUEST ===== -->
-    <section id="yard-sign" class="section yard-sign-section">
-        <div class="container">
-            <div class="yard-sign-box">
-                <h2>Request a Yard Sign</h2>
-                <p>Plant your flag for Beau! Let your neighbors know you stand with the U.P.'s strongest fighter.</p>
-
-                <form class="yard-sign-form" id="yard-sign-form" onsubmit="handleYardSign(event)">
-                    <div class="yard-sign-checkbox-row">
-                        <label class="yard-sign-checkbox-label">
-                            <input type="checkbox" id="yard-sign-check" name="yard_sign" value="yes" required>
-                            <span class="yard-sign-checkmark"></span>
-                            Yes, I want a yard sign!
-                        </label>
-                    </div>
-
-                    <div class="yard-sign-fields">
-                        <div class="yard-sign-field-row">
-                            <div class="yard-sign-field">
-                                <label for="ys-name">Full Name *</label>
-                                <input type="text" id="ys-name" name="name" placeholder="Your full name" required>
-                            </div>
-                            <div class="yard-sign-field">
-                                <label for="ys-email">Email *</label>
-                                <input type="email" id="ys-email" name="email" placeholder="you@email.com" required>
-                            </div>
-                        </div>
-                        <div class="yard-sign-field-row">
-                            <div class="yard-sign-field">
-                                <label for="ys-phone">Phone</label>
-                                <input type="tel" id="ys-phone" name="phone" placeholder="(906) 555-1234">
-                            </div>
-                        </div>
-                        <div class="yard-sign-field-row">
-                            <div class="yard-sign-field yard-sign-field-full">
-                                <label for="ys-address">Street Address *</label>
-                                <input type="text" id="ys-address" name="address" placeholder="123 Main St" required>
-                            </div>
-                        </div>
-                        <div class="yard-sign-field-row">
-                            <div class="yard-sign-field">
-                                <label for="ys-city">City *</label>
-                                <input type="text" id="ys-city" name="city" placeholder="Iron Mountain" required>
-                            </div>
-                            <div class="yard-sign-field yard-sign-field-small">
-                                <label for="ys-state">State</label>
-                                <input type="text" id="ys-state" name="state" value="MI" maxlength="2">
-                            </div>
-                            <div class="yard-sign-field yard-sign-field-small">
-                                <label for="ys-zip">ZIP *</label>
-                                <input type="text" id="ys-zip" name="zip" placeholder="49801" required maxlength="10">
-                            </div>
-                        </div>
-                    </div>
-
-                    <button type="submit" class="btn btn-primary yard-sign-submit">Send Me a Yard Sign</button>
-                    <p class="form-note">We'll never share your info. Your sign will be delivered as soon as possible.</p>
-                </form>
-
-            </div>
-        </div>
-    </section>
-
-    <!-- ===== EMAIL SIGNUP ===== -->
+    <!-- ===== SIGN UP / YARD SIGN ===== -->
     <section id="signup" class="section signup-section">
         <div class="container">
             <div class="signup-box">
@@ -808,39 +734,52 @@
                     <span class="urgency-pulse"></span>
                     <span>Join <strong>fellow Yoopers</strong> standing with Beau</span>
                 </div>
-                <h2>Take Your First Step</h2>
-                <p>It only takes 10 seconds to join the movement. Get campaign updates, volunteer opportunities, and election reminders.</p>
+                <h2>Join the Movement</h2>
+                <p>Sign up as a supporter and get campaign updates. Want a yard sign? Just check the box and we'll get one to you.</p>
 
-                <!-- Commitment Ladder: Start Small -->
-                <div class="commitment-options">
-                    <div class="commitment-option active" data-level="signup">
-                        <span class="commitment-check">&#10003;</span>
-                        <span>Sign up (10 seconds)</span>
-                    </div>
-                    <div class="commitment-option" data-level="share">
-                        <span class="commitment-check"></span>
-                        <span>Share with 1 friend</span>
-                    </div>
-                    <div class="commitment-option" data-level="donate">
-                        <span class="commitment-check"></span>
-                        <span>Chip in any amount</span>
-                    </div>
-                </div>
-
-                <form class="signup-form" id="email-form" action="https://beaulafave.us8.list-manage.com/subscribe/post?u=09bf76a8d0b089445d3a8ee84&amp;id=c2a8a33f82&amp;f_id=006477e1f0" method="POST" target="_blank" onsubmit="handleSignup(event)">
-                    <div class="form-row">
-                        <label for="signup-name" class="visually-hidden">Your Name</label>
-                        <input type="text" id="signup-name" name="FNAME" placeholder="Your Name" aria-label="Your Name">
-                        <label for="signup-email" class="visually-hidden">Your Email</label>
-                        <input type="email" id="signup-email" name="EMAIL" placeholder="Your Email" required aria-label="Your Email">
-                        <!-- Mailchimp bot protection -->
-                        <div style="position: absolute; left: -5000px;" aria-hidden="true">
-                            <input type="text" name="b_09bf76a8d0b089445d3a8ee84_c2a8a33f82" tabindex="-1" value="">
+                <form class="signup-combined-form" id="combined-form" onsubmit="handleCombinedSignup(event)">
+                    <div class="signup-combined-fields">
+                        <div class="signup-combined-row">
+                            <div class="signup-combined-field">
+                                <input type="text" id="cb-name" name="FNAME" placeholder="Your Name" required>
+                            </div>
+                            <div class="signup-combined-field">
+                                <input type="email" id="cb-email" name="EMAIL" placeholder="Your Email" required>
+                            </div>
                         </div>
-                        <button type="submit" class="btn btn-secondary">Count Me In</button>
+
+                        <div class="yard-sign-toggle">
+                            <label class="yard-sign-checkbox-label">
+                                <input type="checkbox" id="cb-yard-sign" name="yard_sign" value="yes">
+                                <span class="yard-sign-checkmark-box"></span>
+                                Yes, send me a yard sign!
+                            </label>
+                        </div>
+
+                        <div class="yard-sign-address-fields" id="address-fields" style="display: none;">
+                            <div class="signup-combined-row">
+                                <div class="signup-combined-field signup-combined-field-full">
+                                    <input type="text" id="cb-address" name="address" placeholder="Street Address">
+                                </div>
+                            </div>
+                            <div class="signup-combined-row">
+                                <div class="signup-combined-field">
+                                    <input type="text" id="cb-city" name="city" placeholder="City">
+                                </div>
+                                <div class="signup-combined-field signup-combined-field-sm">
+                                    <input type="text" id="cb-state" name="state" value="MI" maxlength="2">
+                                </div>
+                                <div class="signup-combined-field signup-combined-field-sm">
+                                    <input type="text" id="cb-zip" name="zip" placeholder="ZIP Code" maxlength="10">
+                                </div>
+                            </div>
+                        </div>
                     </div>
+
+                    <button type="submit" class="btn btn-secondary" id="combined-submit">Count Me In</button>
                     <p class="form-note">We respect your privacy. Unsubscribe anytime. No spam, ever.</p>
                 </form>
+
                 <div id="signup-success" class="signup-success" style="display: none;">
                     <p>Welcome to the fight! You're now signed up for campaign updates.</p>
                     <p class="signup-next-step">Ready to do more? <a href="https://secure.anedot.com/beau-lafave-for-state-senate" target="_blank" rel="noopener">Chip in $10 to help Beau win</a></p>
@@ -996,16 +935,38 @@
             });
         }
 
-        // Email signup handler (Mailchimp integration)
-        function handleSignup(e) {
-            // Allow form to submit to Mailchimp
-            const form = e.target;
-            // Show success message after a brief delay
-            setTimeout(function() {
-                form.style.display = 'none';
+        // Toggle address fields when yard sign checkbox is checked
+        document.getElementById('cb-yard-sign').addEventListener('change', function() {
+            const addressFields = document.getElementById('address-fields');
+            const submitBtn = document.getElementById('combined-submit');
+            if (this.checked) {
+                addressFields.style.display = 'block';
+                document.getElementById('cb-address').required = true;
+                document.getElementById('cb-city').required = true;
+                document.getElementById('cb-zip').required = true;
+                submitBtn.textContent = 'Sign Up & Request My Yard Sign';
+            } else {
+                addressFields.style.display = 'none';
+                document.getElementById('cb-address').required = false;
+                document.getElementById('cb-city').required = false;
+                document.getElementById('cb-zip').required = false;
+                submitBtn.textContent = 'Count Me In';
+            }
+        });
+
+        // Combined form handler
+        function handleCombinedSignup(e) {
+            e.preventDefault();
+            const wantsSign = document.getElementById('cb-yard-sign').checked;
+
+            if (wantsSign) {
+                // Redirect to thank-you page with donation ask
+                window.location.href = 'thank-you.html';
+            } else {
+                // Show inline success for regular signups
+                document.getElementById('combined-form').style.display = 'none';
                 document.getElementById('signup-success').style.display = 'block';
-            }, 500);
-            // Don't prevent default - let form submit to Mailchimp
+            }
         }
 
         // Animate stats on scroll
@@ -1021,12 +982,6 @@
         document.querySelectorAll('.stat-card').forEach(card => {
             statsObserver.observe(card);
         });
-
-        // Yard sign form handler — redirect to thank-you page
-        function handleYardSign(e) {
-            e.preventDefault();
-            window.location.href = 'thank-you.html';
-        }
 
         // Tickers use pure CSS animation — no JS needed.
     </script>

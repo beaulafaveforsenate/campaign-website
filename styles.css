@@ -5003,81 +5003,61 @@ footer {
     }
 }
 
-/* ===== Yard Sign CTA Banner ===== */
-.yard-sign-banner {
-    background: var(--green-dark);
-    padding: 16px 0;
-    text-align: center;
-}
-
-.yard-sign-banner-content {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 16px;
-    flex-wrap: wrap;
-}
-
-.yard-sign-banner-icon {
-    font-size: 1.5rem;
-    display: none;
-}
-
-.yard-sign-banner-content p {
-    color: var(--white);
-    font-size: 1.05rem;
-    margin: 0;
-}
-
-.yard-sign-banner-btn {
-    padding: 10px 28px;
-    font-size: 0.9rem;
-    letter-spacing: 1.5px;
-}
-
-/* ===== Yard Sign Request Section ===== */
-.yard-sign-section {
-    background: var(--off-white);
-}
-
-.yard-sign-box {
-    max-width: 720px;
+/* ===== Combined Signup / Yard Sign Form ===== */
+.signup-combined-form {
+    max-width: 520px;
     margin: 0 auto;
-    background: var(--white);
-    border-radius: 8px;
-    padding: 48px 40px;
-    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+    position: relative;
+    z-index: 1;
+}
+
+.signup-combined-fields {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.signup-combined-row {
+    display: flex;
+    gap: 12px;
+}
+
+.signup-combined-field {
+    flex: 1;
+}
+
+.signup-combined-field-full {
+    flex: 1 1 100%;
+}
+
+.signup-combined-field-sm {
+    flex: 0 0 90px;
+}
+
+.signup-combined-field input {
+    width: 100%;
+    padding: 16px 18px;
+    border: none;
+    font-size: 1rem;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.signup-combined-field input:focus {
+    outline: 3px solid var(--green-accent);
+}
+
+.yard-sign-toggle {
     text-align: center;
-}
-
-.yard-sign-box h2 {
-    font-size: 2.2rem;
-    color: var(--green-dark);
-    margin-bottom: 12px;
-}
-
-.yard-sign-box > p {
-    color: var(--text-light);
-    font-size: 1.1rem;
-    margin-bottom: 32px;
-}
-
-.yard-sign-form {
-    text-align: left;
-}
-
-.yard-sign-checkbox-row {
-    text-align: center;
-    margin-bottom: 28px;
+    margin: 8px 0 4px;
 }
 
 .yard-sign-checkbox-label {
     display: inline-flex;
     align-items: center;
-    gap: 12px;
-    font-size: 1.15rem;
+    gap: 10px;
+    font-size: 1.05rem;
     font-weight: 600;
-    color: var(--green-dark);
+    color: var(--white);
     cursor: pointer;
     font-family: 'Oswald', sans-serif;
     text-transform: uppercase;
@@ -5085,150 +5065,41 @@ footer {
 }
 
 .yard-sign-checkbox-label input[type="checkbox"] {
-    width: 22px;
-    height: 22px;
-    accent-color: var(--green-dark);
+    width: 20px;
+    height: 20px;
+    accent-color: var(--white);
     cursor: pointer;
 }
 
-.yard-sign-fields {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
+.yard-sign-address-fields {
+    animation: slideDown 0.3s ease;
 }
 
-.yard-sign-field-row {
-    display: flex;
-    gap: 16px;
+@keyframes slideDown {
+    from { opacity: 0; transform: translateY(-8px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
-.yard-sign-field {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-}
-
-.yard-sign-field-full {
-    flex: 1 1 100%;
-}
-
-.yard-sign-field-small {
-    flex: 0 0 100px;
-}
-
-.yard-sign-field label {
-    font-size: 0.85rem;
-    font-weight: 600;
-    color: var(--text);
-}
-
-.yard-sign-field input {
-    padding: 14px 16px;
-    border: 2px solid var(--gray-light);
-    border-radius: 4px;
-    font-size: 1rem;
-    font-family: 'Montserrat', sans-serif;
-    transition: border-color 0.2s;
-}
-
-.yard-sign-field input:focus {
-    outline: none;
-    border-color: var(--green);
-    box-shadow: 0 0 0 3px rgba(0, 135, 58, 0.15);
-}
-
-.yard-sign-submit {
+.signup-combined-form .btn {
     display: block;
     width: 100%;
-    margin-top: 28px;
-    text-align: center;
-    font-size: 1.1rem;
-}
-
-.yard-sign-form .form-note {
-    text-align: center;
-    color: var(--gray);
-    margin-top: 12px;
-}
-
-/* Yard Sign Success */
-.yard-sign-success {
-    text-align: center;
-}
-
-.yard-sign-success-icon {
-    width: 64px;
-    height: 64px;
-    background: var(--green);
-    color: white;
-    border-radius: 50%;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 2rem;
-    margin-bottom: 20px;
-}
-
-.yard-sign-success h3 {
-    font-size: 1.8rem;
+    margin-top: 16px;
+    background: var(--white);
     color: var(--green-dark);
-    margin-bottom: 12px;
+    border-color: var(--white);
 }
 
-.yard-sign-success > p {
-    color: var(--text-light);
-    font-size: 1.1rem;
-    margin-bottom: 28px;
-}
-
-.yard-sign-donate-ask {
+.signup-combined-form .btn:hover {
     background: var(--cream);
-    border: 2px solid var(--gray-light);
-    border-radius: 8px;
-    padding: 32px 28px;
-    margin-top: 8px;
+    border-color: var(--cream);
 }
 
-.yard-sign-donate-ask p {
-    color: var(--text);
-    font-size: 1rem;
-    line-height: 1.7;
-    margin-bottom: 16px;
-}
-
-.yard-sign-donate-ask .btn {
-    margin-top: 8px;
-}
-
-.yard-sign-no-thanks {
-    margin-top: 16px !important;
-    font-size: 0.9rem !important;
-    color: var(--gray) !important;
-    cursor: pointer;
-    text-decoration: underline;
-}
-
-.yard-sign-no-thanks:hover {
-    color: var(--text) !important;
-}
-
-/* Yard Sign Responsive */
 @media (max-width: 600px) {
-    .yard-sign-box {
-        padding: 32px 20px;
-    }
-
-    .yard-sign-field-row {
+    .signup-combined-row {
         flex-direction: column;
     }
 
-    .yard-sign-field-small {
+    .signup-combined-field-sm {
         flex: 1;
-    }
-
-    .yard-sign-banner-content {
-        flex-direction: column;
-        gap: 10px;
     }
 }
