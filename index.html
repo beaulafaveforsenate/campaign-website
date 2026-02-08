@@ -737,26 +737,20 @@
                 <h2>Join the Movement</h2>
                 <p>Sign up as a supporter and get campaign updates. Want a yard sign? Just check the box and we'll get one to you.</p>
 
-                <!-- Hidden iframe for background Mailchimp submission -->
-                <iframe name="mc-hidden-frame" style="display:none;" aria-hidden="true"></iframe>
-
-                <form class="signup-combined-form" id="combined-form"
-                      action="https://beaulafave.us8.list-manage.com/subscribe/post?u=09bf76a8d0b089445d3a8ee84&amp;id=c2a8a33f82&amp;f_id=006477e1f0"
-                      method="POST" target="mc-hidden-frame"
-                      onsubmit="handleCombinedSignup(event)">
+                <form class="signup-combined-form" id="combined-form" onsubmit="handleCombinedSignup(event)">
                     <div class="signup-combined-fields">
                         <div class="signup-combined-row">
                             <div class="signup-combined-field">
-                                <input type="text" id="cb-name" name="MERGE1" placeholder="Your Name" required>
+                                <input type="text" id="cb-name" placeholder="Your Name" required>
                             </div>
                             <div class="signup-combined-field">
-                                <input type="email" id="cb-email" name="MERGE0" placeholder="Your Email" required>
+                                <input type="email" id="cb-email" placeholder="Your Email" required>
                             </div>
                         </div>
 
                         <div class="yard-sign-toggle">
                             <label class="yard-sign-checkbox-label">
-                                <input type="checkbox" id="cb-yard-sign" name="MERGE4" value="Yes">
+                                <input type="checkbox" id="cb-yard-sign">
                                 <span class="yard-sign-checkmark-box"></span>
                                 Yes, send me a yard sign!
                             </label>
@@ -765,26 +759,21 @@
                         <div class="yard-sign-address-fields" id="address-fields" style="display: none;">
                             <div class="signup-combined-row">
                                 <div class="signup-combined-field signup-combined-field-full">
-                                    <input type="text" id="cb-address" name="MERGE3[addr1]" placeholder="Street Address">
+                                    <input type="text" id="cb-address" placeholder="Street Address">
                                 </div>
                             </div>
                             <div class="signup-combined-row">
                                 <div class="signup-combined-field">
-                                    <input type="text" id="cb-city" name="MERGE3[city]" placeholder="City">
+                                    <input type="text" id="cb-city" placeholder="City">
                                 </div>
                                 <div class="signup-combined-field signup-combined-field-sm">
-                                    <input type="text" id="cb-state" name="MERGE3[state]" value="MI" maxlength="2">
+                                    <input type="text" id="cb-state" value="MI" maxlength="2">
                                 </div>
                                 <div class="signup-combined-field signup-combined-field-sm">
-                                    <input type="text" id="cb-zip" name="MERGE3[zip]" placeholder="ZIP Code" maxlength="10">
+                                    <input type="text" id="cb-zip" placeholder="ZIP Code" maxlength="10">
                                 </div>
                             </div>
                         </div>
-                    </div>
-
-                    <!-- Mailchimp bot protection -->
-                    <div style="position: absolute; left: -5000px;" aria-hidden="true">
-                        <input type="text" name="b_09bf76a8d0b089445d3a8ee84_c2a8a33f82" tabindex="-1" value="">
                     </div>
 
                     <button type="submit" class="btn btn-secondary" id="combined-submit">Count Me In</button>
@@ -965,20 +954,66 @@
             }
         });
 
-        // Combined form handler — submits to Mailchimp via hidden iframe, then redirects
-        function handleCombinedSignup(e) {
-            // Don't preventDefault — let the form POST to Mailchimp via the hidden iframe
-            const wantsSign = document.getElementById('cb-yard-sign').checked;
+        // Submit to Mailchimp via JSONP (cross-origin friendly, no iframe needed)
+        function submitToMailchimp(data, callback) {
+            var params = [];
+            for (var key in data) {
+                if (data[key] !== undefined && data[key] !== '') {
+                    params.push(encodeURIComponent(key) + '=' + encodeURIComponent(data[key]));
+                }
+            }
+            var callbackName = 'mc_callback_' + Date.now();
+            params.push('c=' + callbackName);
 
-            // After a brief delay (to let the iframe POST go through), show result
+            window[callbackName] = function(response) {
+                callback(response);
+                delete window[callbackName];
+                document.head.removeChild(script);
+            };
+
+            var script = document.createElement('script');
+            script.src = 'https://beaulafave.us8.list-manage.com/subscribe/post-json?u=09bf76a8d0b089445d3a8ee84&id=c2a8a33f82&' + params.join('&');
+            document.head.appendChild(script);
+
+            // Fallback timeout in case JSONP doesn't fire
             setTimeout(function() {
+                if (window[callbackName]) {
+                    callback({ result: 'success' });
+                    delete window[callbackName];
+                }
+            }, 5000);
+        }
+
+        // Combined form handler
+        function handleCombinedSignup(e) {
+            e.preventDefault();
+            var btn = document.getElementById('combined-submit');
+            btn.textContent = 'Submitting...';
+            btn.disabled = true;
+
+            var wantsSign = document.getElementById('cb-yard-sign').checked;
+            var data = {
+                MERGE0: document.getElementById('cb-email').value,
+                MERGE1: document.getElementById('cb-name').value
+            };
+
+            if (wantsSign) {
+                data.MERGE4 = 'Yes';
+                data['MERGE3[addr1]'] = document.getElementById('cb-address').value;
+                data['MERGE3[city]'] = document.getElementById('cb-city').value;
+                data['MERGE3[state]'] = document.getElementById('cb-state').value;
+                data['MERGE3[zip]'] = document.getElementById('cb-zip').value;
+                data['MERGE3[country]'] = 'US';
+            }
+
+            submitToMailchimp(data, function(response) {
                 if (wantsSign) {
                     window.location.href = 'thank-you.html';
                 } else {
                     document.getElementById('combined-form').style.display = 'none';
                     document.getElementById('signup-success').style.display = 'block';
                 }
-            }, 600);
+            });
         }
 
         // Animate stats on scroll
