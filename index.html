@@ -67,6 +67,7 @@
                 <li><a href="#district">District</a></li>
                 <li><a href="#media">In the News</a></li>
                 <li><a href="#action">Get Involved</a></li>
+                <li><a href="#yard-sign">Yard Sign</a></li>
                 <li><a href="blog.html">News</a></li>
                 <li><a href="https://secure.anedot.com/beau-lafave-for-state-senate" target="_blank" rel="noopener" class="nav-donate">Donate</a></li>
             </ul>
@@ -84,6 +85,7 @@
                     <li><a href="#district">District 38</a></li>
                     <li><a href="#media">In the News</a></li>
                     <li><a href="#action">Get Involved</a></li>
+                    <li><a href="#yard-sign">Yard Sign</a></li>
                     <li><a href="blog.html">News</a></li>
                     <li><a href="https://secure.anedot.com/beau-lafave-for-state-senate" target="_blank" rel="noopener" class="nav-donate">Donate</a></li>
                 </ul>
@@ -202,6 +204,17 @@
             <span class="quote-ticker-item">"Great news for families who need safe, reliable and affordable energy." <strong>— On Line 5 Victory</strong></span>
             <span class="quote-ticker-item">"The transparency package is what the public deserves and demands." <strong>— On FOIA Reform</strong></span>
             <span class="quote-ticker-item">"Government transparency bill passed 109-0." <strong>— Bipartisan Achievement</strong></span>
+        </div>
+    </div>
+
+    <!-- ===== YARD SIGN CTA BANNER ===== -->
+    <div class="yard-sign-banner">
+        <div class="container">
+            <div class="yard-sign-banner-content">
+                <span class="yard-sign-banner-icon">&#9881;</span>
+                <p><strong>Show Your Support!</strong> Request a free yard sign for your home.</p>
+                <a href="#yard-sign" class="btn btn-secondary yard-sign-banner-btn">Request a Yard Sign</a>
+            </div>
         </div>
     </div>
 
@@ -724,6 +737,80 @@
         </div>
     </section>
 
+    <!-- ===== YARD SIGN REQUEST ===== -->
+    <section id="yard-sign" class="section yard-sign-section">
+        <div class="container">
+            <div class="yard-sign-box">
+                <h2>Request a Yard Sign</h2>
+                <p>Plant your flag for Beau! Let your neighbors know you stand with the U.P.'s strongest fighter.</p>
+
+                <form class="yard-sign-form" id="yard-sign-form" onsubmit="handleYardSign(event)">
+                    <div class="yard-sign-checkbox-row">
+                        <label class="yard-sign-checkbox-label">
+                            <input type="checkbox" id="yard-sign-check" name="yard_sign" value="yes" required>
+                            <span class="yard-sign-checkmark"></span>
+                            Yes, I want a yard sign!
+                        </label>
+                    </div>
+
+                    <div class="yard-sign-fields">
+                        <div class="yard-sign-field-row">
+                            <div class="yard-sign-field">
+                                <label for="ys-name">Full Name *</label>
+                                <input type="text" id="ys-name" name="name" placeholder="Your full name" required>
+                            </div>
+                            <div class="yard-sign-field">
+                                <label for="ys-email">Email *</label>
+                                <input type="email" id="ys-email" name="email" placeholder="you@email.com" required>
+                            </div>
+                        </div>
+                        <div class="yard-sign-field-row">
+                            <div class="yard-sign-field">
+                                <label for="ys-phone">Phone</label>
+                                <input type="tel" id="ys-phone" name="phone" placeholder="(906) 555-1234">
+                            </div>
+                        </div>
+                        <div class="yard-sign-field-row">
+                            <div class="yard-sign-field yard-sign-field-full">
+                                <label for="ys-address">Street Address *</label>
+                                <input type="text" id="ys-address" name="address" placeholder="123 Main St" required>
+                            </div>
+                        </div>
+                        <div class="yard-sign-field-row">
+                            <div class="yard-sign-field">
+                                <label for="ys-city">City *</label>
+                                <input type="text" id="ys-city" name="city" placeholder="Iron Mountain" required>
+                            </div>
+                            <div class="yard-sign-field yard-sign-field-small">
+                                <label for="ys-state">State</label>
+                                <input type="text" id="ys-state" name="state" value="MI" maxlength="2">
+                            </div>
+                            <div class="yard-sign-field yard-sign-field-small">
+                                <label for="ys-zip">ZIP *</label>
+                                <input type="text" id="ys-zip" name="zip" placeholder="49801" required maxlength="10">
+                            </div>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary yard-sign-submit">Send Me a Yard Sign</button>
+                    <p class="form-note">We'll never share your info. Your sign will be delivered as soon as possible.</p>
+                </form>
+
+                <div id="yard-sign-success" class="yard-sign-success" style="display: none;">
+                    <div class="yard-sign-success-icon">&#10003;</div>
+                    <h3>Thank You for Requesting a Yard Sign!</h3>
+                    <p>We're so grateful for your support. Your sign will be on its way soon.</p>
+                    <div class="yard-sign-donate-ask">
+                        <p>Here's the honest truth — yard signs, printing, and delivery add up fast. If you're able to chip in even <strong>$5</strong>, it would go a long way toward helping us get signs to supporters all across the U.P.</p>
+                        <p>No pressure at all — your support already means the world.</p>
+                        <a href="https://secure.anedot.com/beau-lafave-for-state-senate" target="_blank" rel="noopener" class="btn btn-primary">Chip In $5 to Help Cover Costs</a>
+                        <p class="yard-sign-no-thanks" id="yard-sign-dismiss">No thanks, I'm all set!</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- ===== EMAIL SIGNUP ===== -->
     <section id="signup" class="section signup-section">
         <div class="container">
@@ -944,6 +1031,20 @@
 
         document.querySelectorAll('.stat-card').forEach(card => {
             statsObserver.observe(card);
+        });
+
+        // Yard sign form handler
+        function handleYardSign(e) {
+            e.preventDefault();
+            const form = document.getElementById('yard-sign-form');
+            const success = document.getElementById('yard-sign-success');
+            form.style.display = 'none';
+            success.style.display = 'block';
+            success.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+
+        document.getElementById('yard-sign-dismiss').addEventListener('click', function() {
+            document.querySelector('.yard-sign-donate-ask').innerHTML = '<p style="font-size: 1.2rem; font-weight: 600;">You\'re awesome — thank you for standing with Beau!</p>';
         });
 
         // Tickers use pure CSS animation — no JS needed.
