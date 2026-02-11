@@ -185,6 +185,23 @@ nav {
     top: 0;
 }
 
+.announcement-banner-active {
+    margin-top: 44px;
+}
+
+.announcement-banner-active .sticky-nav.visible {
+    top: 44px;
+}
+
+@media (max-width: 768px) {
+    .announcement-banner-active {
+        margin-top: 52px;
+    }
+    .announcement-banner-active .sticky-nav.visible {
+        top: 52px;
+    }
+}
+
 .sticky-nav .nav-links {
     gap: 24px;
 }
@@ -216,6 +233,9 @@ nav {
     font-weight: 700;
     color: var(--white);
     text-decoration: none;
+    margin-right: 32px;
+    white-space: nowrap;
+    flex-shrink: 0;
     text-transform: uppercase;
     letter-spacing: 2px;
 }
@@ -5108,5 +5128,569 @@ footer {
 
     .signup-combined-field-sm {
         flex: 1;
+    }
+}
+
+/* ===== Announcement Banner ===== */
+.announcement-banner {
+    background: linear-gradient(90deg, #b8941f, #d4af37, #e8c95a, #d4af37, #b8941f);
+    background-size: 200% 100%;
+    animation: bannerShimmer 4s ease-in-out infinite;
+    color: #1a1a1a;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1100;
+}
+
+@keyframes bannerShimmer {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+}
+
+.announcement-banner-link {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 24px;
+    text-decoration: none;
+    color: #1a1a1a;
+    font-family: 'Oswald', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    transition: opacity 0.2s;
+    text-align: center;
+}
+
+.announcement-banner-link:hover {
+    opacity: 0.85;
+}
+
+.announcement-banner-icon {
+    font-size: 1.1rem;
+    animation: bannerStarPulse 2s ease-in-out infinite;
+}
+
+@keyframes bannerStarPulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.3); }
+}
+
+.announcement-banner-text strong {
+    font-weight: 700;
+}
+
+.announcement-banner-arrow {
+    font-size: 1.2rem;
+    transition: transform 0.2s;
+}
+
+.announcement-banner-link:hover .announcement-banner-arrow {
+    transform: translateX(4px);
+}
+
+.announcement-banner-close {
+    position: absolute;
+    right: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    color: #1a1a1a;
+    font-size: 1.4rem;
+    cursor: pointer;
+    padding: 4px 8px;
+    opacity: 0.6;
+    transition: opacity 0.2s;
+    line-height: 1;
+}
+
+.announcement-banner-close:hover {
+    opacity: 1;
+}
+
+@media (max-width: 768px) {
+    .announcement-banner-link {
+        flex-direction: column;
+        gap: 2px;
+        padding: 10px 40px 10px 16px;
+        font-size: 0.8rem;
+        letter-spacing: 1px;
+        text-align: center;
+    }
+
+    .announcement-banner-icon {
+        display: none;
+    }
+
+    .announcement-banner-arrow {
+        display: none;
+    }
+
+    .announcement-banner-sub {
+        display: block;
+        font-size: 0.7rem;
+        font-weight: 400;
+        opacity: 0.8;
+        letter-spacing: 0.5px;
+    }
+
+    .announcement-banner-close {
+        right: 6px;
+        font-size: 1.2rem;
+    }
+}
+
+@media (max-width: 400px) {
+    .announcement-banner-link {
+        font-size: 0.7rem;
+        padding: 8px 32px 8px 12px;
+    }
+
+    .announcement-banner-sub {
+        font-size: 0.65rem;
+    }
+}
+
+/* ===== Quote Ticker Featured ===== */
+.quote-ticker-featured {
+    color: #e8c95a !important;
+}
+
+.quote-ticker-featured strong {
+    color: #e8c95a !important;
+}
+
+/* ===== Hero Endorsement Badge ===== */
+.hero-endorsement-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(255, 255, 255, 0.12);
+    border: 2px solid rgba(201, 165, 78, 0.6);
+    color: #e8c95a;
+    padding: 10px 24px;
+    font-family: 'Oswald', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-decoration: none;
+    margin-bottom: 24px;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(4px);
+}
+
+.hero-endorsement-badge:hover {
+    background: rgba(201, 165, 78, 0.2);
+    border-color: #e8c95a;
+    transform: translateY(-2px);
+}
+
+.hero-endorsement-star {
+    font-size: 1rem;
+    animation: bannerStarPulse 2s ease-in-out infinite;
+}
+
+/* ===== Gallery Endorsed Item ===== */
+.gallery-item-endorsed {
+    position: relative;
+}
+
+.gallery-endorsed-badge {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    background: linear-gradient(135deg, #c9a54e, #e8c95a);
+    color: #1a1a1a;
+    padding: 4px 14px;
+    font-family: 'Oswald', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    z-index: 2;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* ===== Footer Bergman Quote ===== */
+.footer-bergman-quote {
+    max-width: 700px;
+    margin: 0 auto 32px;
+    padding: 24px 32px;
+    background: rgba(255, 255, 255, 0.06);
+    border-left: 4px solid #d4af37;
+    border-radius: 0 8px 8px 0;
+    text-align: left;
+}
+
+.footer-bergman-quote p {
+    font-size: 1.1rem;
+    font-style: italic;
+    line-height: 1.7;
+    color: rgba(255, 255, 255, 0.9);
+    margin-bottom: 8px;
+}
+
+.footer-bergman-quote span {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #d4af37;
+}
+
+/* ===== Blog Featured Card ===== */
+.blog-card-featured {
+    border-left: 5px solid #d4af37;
+    background: linear-gradient(135deg, #f9f6ee, var(--cream));
+    position: relative;
+}
+
+.blog-card-featured::before {
+    content: 'BREAKING';
+    position: absolute;
+    top: 0;
+    right: 0;
+    background: linear-gradient(135deg, #c9a54e, #e8c95a);
+    color: #1a1a1a;
+    padding: 4px 16px;
+    font-family: 'Oswald', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+@media (max-width: 768px) {
+    .hero-endorsement-badge {
+        font-size: 0.75rem;
+        padding: 8px 16px;
+        letter-spacing: 1px;
+    }
+
+    .footer-bergman-quote {
+        padding: 20px 24px;
+    }
+
+    .footer-bergman-quote p {
+        font-size: 1rem;
+    }
+}
+
+/* ===== Bergman Endorsement Section ===== */
+.bergman-endorsement-section {
+    background: linear-gradient(135deg, #003d20 0%, var(--green-dark) 40%, #004d2a 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+.bergman-endorsement-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background:
+        radial-gradient(ellipse at 20% 50%, rgba(111, 191, 115, 0.08) 0%, transparent 60%),
+        radial-gradient(ellipse at 80% 50%, rgba(255, 255, 255, 0.03) 0%, transparent 60%);
+    pointer-events: none;
+}
+
+.endorsement-announcement-badge {
+    text-align: center;
+    margin-bottom: 20px;
+    position: relative;
+    z-index: 1;
+}
+
+.endorsement-announcement-badge {
+    display: inline-block;
+    background: linear-gradient(135deg, #c9a54e, #e8c95a, #c9a54e);
+    color: #1a1a1a;
+    padding: 8px 28px;
+    font-family: 'Oswald', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    margin: 0 auto 20px;
+    display: block;
+    width: fit-content;
+}
+
+.bergman-endorsement-section h2 {
+    position: relative;
+    z-index: 1;
+}
+
+.bergman-endorsement-section .featured-endorsement-grid {
+    position: relative;
+    z-index: 1;
+}
+
+.endorsement-subquote {
+    font-size: 1.05rem;
+    color: rgba(255, 255, 255, 0.75);
+    line-height: 1.7;
+    margin-top: 16px;
+    margin-bottom: 24px;
+    font-style: italic;
+}
+
+.endorsement-featured {
+    font-weight: 700 !important;
+    color: #c9a54e !important;
+}
+
+/* ===== Endorsements Page ===== */
+.endorsements-hero {
+    text-align: center;
+}
+
+.endorsements-hero .hero-tagline {
+    max-width: 700px;
+}
+
+.endorsement-page-featured {
+    background: linear-gradient(135deg, #003d20 0%, var(--green-dark) 40%, #004d2a 100%);
+    color: var(--white);
+    position: relative;
+    overflow: hidden;
+}
+
+.endorsement-page-featured::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background:
+        radial-gradient(ellipse at 20% 50%, rgba(111, 191, 115, 0.08) 0%, transparent 60%),
+        radial-gradient(ellipse at 80% 50%, rgba(255, 255, 255, 0.03) 0%, transparent 60%);
+    pointer-events: none;
+}
+
+.endorsement-page-featured .container {
+    position: relative;
+    z-index: 1;
+}
+
+.endorsement-full-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.4fr;
+    gap: 60px;
+    align-items: start;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.endorsement-full-photo img {
+    width: 100%;
+    max-width: 500px;
+    height: auto;
+    display: block;
+    border-radius: 12px;
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
+}
+
+.endorsement-full-content {
+    padding: 20px 0;
+}
+
+.endorsement-full-content h2 {
+    font-size: 2.4rem;
+    color: var(--white);
+    margin-bottom: 24px;
+    text-align: left;
+}
+
+.endorsement-full-statement {
+    margin-top: 32px;
+    padding-top: 32px;
+    border-top: 2px solid rgba(255, 255, 255, 0.15);
+}
+
+.endorsement-full-statement h3 {
+    font-size: 1.4rem;
+    color: var(--green-accent);
+    margin-bottom: 24px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.endorsement-full-statement blockquote {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: rgba(255, 255, 255, 0.9);
+    margin-bottom: 16px;
+    padding-left: 24px;
+    border-left: 3px solid var(--green-accent);
+}
+
+.endorsement-full-statement blockquote + blockquote {
+    margin-top: 20px;
+}
+
+.endorsement-beau-response {
+    margin-top: 40px;
+    padding: 32px;
+    background: rgba(255, 255, 255, 0.06);
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.endorsement-beau-response h3 {
+    font-size: 1.2rem;
+    color: var(--white);
+    margin-bottom: 16px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.endorsement-beau-response p {
+    font-size: 1.05rem;
+    line-height: 1.8;
+    color: rgba(255, 255, 255, 0.85);
+    margin-bottom: 16px;
+}
+
+.endorsement-beau-response p:last-child {
+    margin-bottom: 0;
+}
+
+/* Other endorsements on endorsements page */
+.other-endorsements-section {
+    background: var(--off-white);
+}
+
+.other-endorsements-section h2 {
+    text-align: center;
+    font-size: 2.4rem;
+    color: var(--green-dark);
+    margin-bottom: 16px;
+}
+
+.endorsement-card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+    gap: 32px;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.endorsement-card {
+    background: var(--white);
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+    border-top: 4px solid var(--green-dark);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.endorsement-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+.endorsement-card-photo {
+    margin-bottom: 24px;
+}
+
+.endorsement-card-photo img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    object-fit: cover;
+    aspect-ratio: 16 / 10;
+}
+
+.endorsement-card .quote-mark {
+    font-size: 3.5rem;
+    color: var(--green-accent);
+    line-height: 1;
+    margin-bottom: -12px;
+    font-family: Georgia, serif;
+}
+
+.endorsement-card-quote {
+    font-size: 1.1rem;
+    font-style: italic;
+    line-height: 1.7;
+    color: var(--text);
+    margin-bottom: 16px;
+}
+
+.endorsement-card-source {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--green-dark);
+    font-family: 'Oswald', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.endorsement-card .btn {
+    margin-top: 20px;
+    padding: 12px 28px;
+    font-size: 0.85rem;
+}
+
+/* Past endorsements list on endorsements page */
+.past-endorsements-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    justify-content: center;
+    max-width: 900px;
+    margin: 40px auto 0;
+}
+
+.past-endorsement-badge {
+    background: var(--white);
+    border: 2px solid var(--green-dark);
+    padding: 10px 24px;
+    font-family: 'Oswald', sans-serif;
+    font-weight: 600;
+    font-size: 0.95rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--green-dark);
+}
+
+@media (max-width: 768px) {
+    .endorsement-full-grid {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+
+    .endorsement-full-photo img {
+        max-width: 320px;
+        margin: 0 auto;
+    }
+
+    .endorsement-full-content h2 {
+        text-align: center;
+        font-size: 1.8rem;
+    }
+
+    .endorsement-full-statement blockquote {
+        font-size: 1rem;
+    }
+
+    .endorsement-card-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .endorsement-announcement-badge {
+        font-size: 0.75rem;
+        padding: 6px 20px;
+        letter-spacing: 2px;
     }
 }
