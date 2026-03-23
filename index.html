@@ -758,7 +758,7 @@
                     <span>Join <strong>fellow Yoopers</strong> standing with Beau</span>
                 </div>
                 <h2>Join the Movement</h2>
-                <p>Sign up as a supporter and get campaign updates. Want a yard sign? Just check the box and we'll get one to you.</p>
+                <p>Sign up as a supporter and get campaign updates.</p>
 
                 <form class="signup-combined-form" id="combined-form" onsubmit="handleCombinedSignup(event)">
                     <div class="signup-combined-fields">
@@ -770,33 +770,6 @@
                                 <input type="email" id="cb-email" placeholder="Your Email" required>
                             </div>
                         </div>
-
-                        <div class="yard-sign-toggle">
-                            <label class="yard-sign-checkbox-label">
-                                <input type="checkbox" id="cb-yard-sign">
-                                <span class="yard-sign-checkmark-box"></span>
-                                Yes, send me a yard sign!
-                            </label>
-                        </div>
-
-                        <div class="yard-sign-address-fields" id="address-fields" style="display: none;">
-                            <div class="signup-combined-row">
-                                <div class="signup-combined-field signup-combined-field-full">
-                                    <input type="text" id="cb-address" placeholder="Street Address">
-                                </div>
-                            </div>
-                            <div class="signup-combined-row">
-                                <div class="signup-combined-field">
-                                    <input type="text" id="cb-city" placeholder="City">
-                                </div>
-                                <div class="signup-combined-field signup-combined-field-sm">
-                                    <input type="text" id="cb-state" value="MI" maxlength="2">
-                                </div>
-                                <div class="signup-combined-field signup-combined-field-sm">
-                                    <input type="text" id="cb-zip" placeholder="ZIP Code" maxlength="10">
-                                </div>
-                            </div>
-                        </div>
                     </div>
 
                     <button type="submit" class="btn btn-secondary" id="combined-submit">Count Me In</button>
@@ -806,6 +779,12 @@
                 <div id="signup-success" class="signup-success" style="display: none;">
                     <p>Welcome to the fight! You're now signed up for campaign updates.</p>
                     <p class="signup-next-step">Ready to do more? <a href="https://secure.winred.com/beau-lafave-for-state-senate-3eac0fde/donate" target="_blank" rel="noopener">Chip in $10 to help Beau win</a></p>
+                </div>
+
+                <div class="yard-sign-survey" style="margin-top: 2rem; text-align: center;">
+                    <h3 style="margin-bottom: 0.5rem;">Want a Yard Sign?</h3>
+                    <p style="margin-bottom: 1rem; opacity: 0.9;">Fill out this quick form and we'll get one to you.</p>
+                    <script>(function(t,e,s,n){var o,a,c;t.SMCX=t.SMCX||[],e.getElementById(n)||(o=e.getElementsByTagName(s),a=o[o.length-1],c=e.createElement(s),c.type="text/javascript",c.async=!0,c.id=n,c.src="https://widget.surveymonkey.com/collect/website/js/tRaiETqnLgj758hTBazgd5M58tggxeII7bOlSeQcq8AuGmeGwQw7_2BK3kfJAO8R3Y.js",a.parentNode.insertBefore(c,a))})(window,document,"script","smcx-sdk");</script>
                 </div>
             </div>
         </div>
@@ -969,24 +948,6 @@
             });
         }
 
-        // Toggle address fields when yard sign checkbox is checked
-        document.getElementById('cb-yard-sign').addEventListener('change', function() {
-            const addressFields = document.getElementById('address-fields');
-            const submitBtn = document.getElementById('combined-submit');
-            if (this.checked) {
-                addressFields.style.display = 'flex';
-                document.getElementById('cb-address').required = true;
-                document.getElementById('cb-city').required = true;
-                document.getElementById('cb-zip').required = true;
-                submitBtn.textContent = 'Sign Up & Request My Yard Sign';
-            } else {
-                addressFields.style.display = 'none';
-                document.getElementById('cb-address').required = false;
-                document.getElementById('cb-city').required = false;
-                document.getElementById('cb-zip').required = false;
-                submitBtn.textContent = 'Count Me In';
-            }
-        });
 
         // Submit to Mailchimp via JSONP (cross-origin friendly, no iframe needed)
         function submitToMailchimp(data, callback) {
@@ -1025,28 +986,14 @@
             btn.textContent = 'Submitting...';
             btn.disabled = true;
 
-            var wantsSign = document.getElementById('cb-yard-sign').checked;
             var data = {
                 MERGE0: document.getElementById('cb-email').value,
                 MERGE1: document.getElementById('cb-name').value
             };
 
-            if (wantsSign) {
-                data.MERGE4 = 'Yes';
-                data['MERGE3[addr1]'] = document.getElementById('cb-address').value;
-                data['MERGE3[city]'] = document.getElementById('cb-city').value;
-                data['MERGE3[state]'] = document.getElementById('cb-state').value;
-                data['MERGE3[zip]'] = document.getElementById('cb-zip').value;
-                data['MERGE3[country]'] = 'US';
-            }
-
             submitToMailchimp(data, function(response) {
-                if (wantsSign) {
-                    window.location.href = 'thank-you.html';
-                } else {
-                    document.getElementById('combined-form').style.display = 'none';
-                    document.getElementById('signup-success').style.display = 'block';
-                }
+                document.getElementById('combined-form').style.display = 'none';
+                document.getElementById('signup-success').style.display = 'block';
             });
         }
 
