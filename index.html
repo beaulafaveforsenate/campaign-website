@@ -999,6 +999,7 @@
             btn.textContent = 'Submitting...';
             btn.disabled = true;
 
+            var phoneEl = document.getElementById('cb-phone');
             var data = {
                 EMAIL: document.getElementById('cb-email').value,
                 FNAME: document.getElementById('cb-fname').value,
@@ -1007,9 +1008,11 @@
                 'ADDRESS[city]': document.getElementById('cb-city').value,
                 'ADDRESS[state]': document.getElementById('cb-state').value,
                 'ADDRESS[zip]': document.getElementById('cb-zip').value,
-                'ADDRESS[country]': 'US',
-                PHONE: document.getElementById('cb-phone').value
+                'ADDRESS[country]': 'US'
             };
+            if (phoneEl && phoneEl.value) {
+                data.PHONE = phoneEl.value;
+            }
 
             submitToMailchimp(data, function(response) {
                 window.location.href = 'thank-you';
