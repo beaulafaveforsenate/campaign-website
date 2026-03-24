@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Request a Yard Sign - Beau LaFave for State Senate</title>
+    <meta name="description" content="Request a yard sign to show your support for Beau LaFave for Michigan State Senate District 38.">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect fill='%23006837' width='32' height='32'/%3E%3Ctext x='50%25' y='55%25' fill='white' font-family='Arial Black' font-size='18' font-weight='bold' text-anchor='middle' dominant-baseline='middle'%3EBL%3C/text%3E%3C/svg%3E">
+    <meta name="theme-color" content="#006837">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        .ys-page { min-height: 100vh; display: flex; flex-direction: column; }
+        .ys-hero {
+            background: linear-gradient(135deg, var(--green-dark) 0%, var(--green) 100%);
+            padding: 80px 0 40px;
+            text-align: center;
+            position: relative;
+        }
+        .ys-hero::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.05' fill-rule='evenodd'%3E%3Cpath d='M0 40L40 0H20L0 20M40 40V20L20 40'/%3E%3C/g%3E%3C/svg%3E");
+        }
+        .ys-hero .container { position: relative; z-index: 1; }
+        .ys-hero h1 { color: white; font-size: 2.8rem; margin-bottom: 12px; }
+        .ys-hero p { color: rgba(255,255,255,0.9); font-size: 1.2rem; max-width: 550px; margin: 0 auto; }
+        .ys-main { flex: 1; padding: 60px 0 80px; background: var(--off-white); }
+        .ys-footer {
+            background: var(--green-dark);
+            padding: 24px 0;
+            text-align: center;
+        }
+        .ys-footer p { color: rgba(255,255,255,0.7); font-size: 0.85rem; }
+        .ys-footer a { color: white; text-decoration: none; }
+        @media (max-width: 600px) {
+            .ys-hero { padding: 60px 0 30px; }
+            .ys-hero h1 { font-size: 2rem; }
+        }
+    </style>
+</head>
+<body class="ys-page">
+    <div class="ys-hero">
+        <div class="container">
+            <h1>Request a Yard Sign</h1>
+            <p>Show your support for Beau across the Upper Peninsula. Fill out the form below and we'll get a sign to you.</p>
+        </div>
+    </div>
+
+    <div class="ys-main">
+        <div class="container">
+            <div class="signup-box">
+                <div class="signup-urgency">
+                    <span class="urgency-pulse"></span>
+                    <span>Join <strong>fellow Yoopers</strong> standing with Beau</span>
+                </div>
+
+                <form class="signup-combined-form" id="combined-form" onsubmit="handleYardSignSubmit(event)">
+                    <div class="signup-combined-fields">
+                        <div class="signup-combined-row">
+                            <div class="signup-combined-field">
+                                <input type="text" id="cb-fname" placeholder="First Name" required>
+                            </div>
+                            <div class="signup-combined-field">
+                                <input type="text" id="cb-lname" placeholder="Last Name" required>
+                            </div>
+                        </div>
+                        <div class="signup-combined-row">
+                            <div class="signup-combined-field signup-combined-field-full">
+                                <input type="text" id="cb-address" placeholder="Street Address" required>
+                            </div>
+                        </div>
+                        <div class="signup-combined-row">
+                            <div class="signup-combined-field">
+                                <input type="text" id="cb-city" placeholder="City" required>
+                            </div>
+                            <div class="signup-combined-field signup-combined-field-sm">
+                                <input type="text" id="cb-state" value="MI" maxlength="2">
+                            </div>
+                            <div class="signup-combined-field signup-combined-field-sm">
+                                <input type="text" id="cb-zip" placeholder="ZIP Code" maxlength="10" required>
+                            </div>
+                        </div>
+                        <div class="signup-combined-row">
+                            <div class="signup-combined-field">
+                                <input type="tel" id="cb-phone" placeholder="Phone (optional)">
+                            </div>
+                            <div class="signup-combined-field">
+                                <input type="email" id="cb-email" placeholder="Email (optional)">
+                            </div>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn btn-secondary" id="combined-submit">Request My Yard Sign</button>
+                    <p class="form-note">We respect your privacy. No spam, ever.</p>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="ys-footer">
+        <div class="container">
+            <p>&copy; 2026 <a href="index.html">Beau LaFave for State Senate</a>. Paid for by the committee to elect Beau LaFave for State Senate.</p>
+        </div>
+    </div>
+
+    <script>
+        function submitToMailchimp(data, callback) {
+            var params = [];
+            for (var key in data) {
+                if (data[key] !== undefined && data[key] !== '') {
+                    params.push(encodeURIComponent(key) + '=' + encodeURIComponent(data[key]));
+                }
+            }
+            var callbackName = 'mc_callback_' + Date.now();
+            params.push('c=' + callbackName);
+
+            window[callbackName] = function(response) {
+                callback(response);
+                delete window[callbackName];
+                document.head.removeChild(script);
+            };
+
+            var script = document.createElement('script');
+            script.src = 'https://beaulafave.us18.list-manage.com/subscribe/post-json?u=ec193f5afdc7454cbf2c0148b&id=06699f3a81&' + params.join('&');
+            document.head.appendChild(script);
+
+            setTimeout(function() {
+                if (window[callbackName]) {
+                    callback({ result: 'success' });
+                    delete window[callbackName];
+                }
+            }, 5000);
+        }
+
+        function handleYardSignSubmit(e) {
+            e.preventDefault();
+            var btn = document.getElementById('combined-submit');
+            btn.textContent = 'Submitting...';
+            btn.disabled = true;
+
+            var emailEl = document.getElementById('cb-email');
+            var phoneEl = document.getElementById('cb-phone');
+
+            // If no email provided, generate a placeholder for Mailchimp
+            var email = emailEl.value.trim();
+            if (!email) {
+                email = 'yardsign_' + Date.now() + '@noemail.beaulafave.com';
+            }
+
+            var data = {
+                EMAIL: email,
+                FNAME: document.getElementById('cb-fname').value,
+                LNAME: document.getElementById('cb-lname').value,
+                'ADDRESS[addr1]': document.getElementById('cb-address').value,
+                'ADDRESS[city]': document.getElementById('cb-city').value,
+                'ADDRESS[state]': document.getElementById('cb-state').value,
+                'ADDRESS[zip]': document.getElementById('cb-zip').value,
+                'ADDRESS[country]': 'US'
+            };
+            if (phoneEl && phoneEl.value) {
+                data.PHONE = phoneEl.value;
+            }
+
+            submitToMailchimp(data, function(response) {
+                window.location.href = 'thank-you';
+            });
+        }
+    </script>
+</body>
+</html>
